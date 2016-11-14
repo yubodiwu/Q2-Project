@@ -16,7 +16,7 @@ const {
 } = require('mocha');
 const knex = require('../knex');
 
-suite('part1 migrations', () => {
+suite('migrations', () => {
     before((done) => {
         knex.migrate.latest()
             .then(() => {
@@ -38,7 +38,7 @@ suite('part1 migrations', () => {
     });
 
     test('company columns', (done) => {
-        knex('books').columnInfo()
+        knex('companies').columnInfo()
             .then((actual) => {
                 const expected = {
                     id: {
