@@ -2,6 +2,10 @@
   "name": "Network-Cafe",
   "version": "1.0.0",
   "main": "server.js",
+  "scripts": {
+    "knex": "knex",
+    "test": "mocha"
+  },
   "repository": {
     "url": "git@github.com:yubodiwu/Q2-Project.git",
     "type": "git"
@@ -11,6 +15,9 @@
   "dependencies": {
     "chai": "^3.5.0",
     "express": "^4.14.0",
-    "knex": "^0.12.6"
+    "global": "^4.3.1",
+    "knex": "^0.12.6",
+    "mocha": "^3.1.2",
+    "pg": "^6.1.0"
   }
 }
