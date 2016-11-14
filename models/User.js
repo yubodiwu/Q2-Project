@@ -6,7 +6,7 @@
 // jshint mocha: true
 
 class User {
-    constructor(id, firstName, lastName, maidenName, headline, location, industry, currentShare, summary, specialties, positions, picUrl, profileUrl) {
+    constructor(id, firstName, lastName, maidenName, headline, location, industry, currentShare, summary, specialties, positions, picUrl, profileUrl, company) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -20,6 +20,7 @@ class User {
         this.positions = positions;
         this.picUrl = picUrl;
         this.profileUrl = profileUrl;
+        this.company = cumpany
     }
 
     toObject() {
