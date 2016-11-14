@@ -1,44 +1,46 @@
-// Update with your config settings.
+'use strict';
+// jshint esversion: 6
+// jshint devel: true
+// jshint node: true
+// jshint browser: true
+// jshint mocha: true
 
 module.exports = {
 
-  development: {
-    client: 'sqlite3',
-    connection: {
-      filename: './dev.sqlite3'
-    }
-  },
+    development: {
+        client: 'postgresql',
+        connection: 'postgres://localhost/users_dev',
+        pool: {
+            min: 1,
+            max: 1
+        }
+    },
 
-  staging: {
-    client: 'postgresql',
-    connection: {
-      database: 'my_db',
-      user:     'username',
-      password: 'password'
-    },
-    pool: {
-      min: 2,
-      max: 10
-    },
-    migrations: {
-      tableName: 'knex_migrations'
-    }
-  },
+    // developmentCompanies: {
+    //     client: 'postgresql',
+    //     connection: 'postgres://localhost/companies_dev',
+    //     pool: {
+    //         min: 1,
+    //         max: 1
+    //     }
+    // },
 
-  production: {
-    client: 'postgresql',
-    connection: {
-      database: 'my_db',
-      user:     'username',
-      password: 'password'
+    test: {
+        client: 'postgresql',
+        connection: 'postgres://localhost/users_test',
+        pool: {
+            min: 1,
+            max: 1
+        }
     },
-    pool: {
-      min: 2,
-      max: 10
-    },
-    migrations: {
-      tableName: 'knex_migrations'
-    }
-  }
+
+    // testCompanies: {
+    //     client: 'postgresql',
+    //     connection: 'postgres://localhost/companies_test',
+    //     pool: {
+    //         min: 1,
+    //         max: 1
+    //     }
+    // },
 
 };
