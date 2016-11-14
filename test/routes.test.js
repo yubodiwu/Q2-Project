@@ -11,11 +11,14 @@ var request = require('supertest')(app);
 var knex = require('../db/knex')
 
 describe('Users API', function() {
-    it('GET / show things', function(done) {
-        request.get('/api/v1/users')
+    it('GET / show useres', function(done) {
+        request.get('/models/users')
             .expect(200)
             .end(function(err, res) {
                 if (err) return done(err);
+                expect(res.body).to.include({
+
+                });
                 done();
             });
     });
