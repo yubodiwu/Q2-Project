@@ -8,5 +8,18 @@
     "mocha": "^3.1.2",
     "pug": "^2.0.0-beta6",
     "supertest": "^2.0.1"
+  },
+  "name": "Q2-Project",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+      "start": "node ./bin/www",
+      "test": "env NODE_ENV=test mocha"
   }
+  "repository": {
+    "url": "git@github.com:yubodiwu/Q2-Project.git",
+    "type": "git"
+  },
+  "author": "Yubo Allan Diwu <yubo.diwu@gmail.com> and Trevor Pellegrini <trevorpellegrini@gmail.com>",
+  "license": "MIT"
 }
