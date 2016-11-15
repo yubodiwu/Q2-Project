@@ -1,0 +1,14 @@
+body{
+  height:830px;
+  background-image:url("http://unsplash.com/photos/k_RYBedEvDw/download");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+.login-class{
+  margin-top: 13%;
+}
+
+.logo_image_login{
+  margin-left: 2%;
+  margin-top:.5%;
+}
