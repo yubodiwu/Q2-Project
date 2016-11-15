@@ -6,7 +6,7 @@
 // jshint mocha: true
 
 const express = require('express');
-const knex = require('../node_modules/knex');
+const knex = require('../db/knex');
 var router = express.Router();
 
 router.get(`/`, function(req, res) {

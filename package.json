@@ -9,10 +9,13 @@
     "body-parser": "^1.15.2",
     "chai": "^3.5.0",
     "cookie-parser": "^1.4.3",
+    "dotenv": "^2.0.0",
     "ejs": "^2.5.2",
     "express": "^4.14.0",
     "knex": "^0.12.6",
     "node-linkedin": "^0.5.4",
-    "request": "^2.78.0"
+    "pg": "^6.1.0",
+    "request": "^2.78.0",
+    "sqlite": "^2.2.3"
   }
 }
