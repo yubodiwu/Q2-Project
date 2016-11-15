@@ -15,7 +15,6 @@ const app = express();
 const LINKEDIN_KEY = '86tft9s9hjwsa5';
 const LINKEDIN_SECRET = 'D3eYexpjUeGj786l';
 
-var accessToken;
 var scope = ['r_basicprofile'];
 
 app.set('view engine', 'ejs');
@@ -40,7 +39,9 @@ app.get('/oauth/linkedin/callback', function(req, res) {
     Linkedin.auth.getAccessToken(res, req.query.code, req.query.state, function(err, results) {
         if ( err )
             return console.error(err);
-        console.log(results);
+
+        var accessToken = results;
+
         return res.redirect('/');
     });
 });
