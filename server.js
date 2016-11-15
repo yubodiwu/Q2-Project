@@ -16,8 +16,9 @@ const app = express();
 const LINKEDIN_KEY = '86tft9s9hjwsa5';
 const LINKEDIN_SECRET = 'D3eYexpjUeGj786l';
 
-var scope = ['r_basicprofile'];
+var scope = ['r_basicprofile','r_emailaddress'];
 
+app.use(express.static(__dirname + '/public'));
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({
     extended: true
@@ -46,20 +47,18 @@ app.get('/oauth/linkedin/callback', function(req, res) {
         var accessToken = results;
         console.log(results);
         var options = {
-            url: 'https://api.linkedin.com/v1/',
+            url: 'https://api.linkedin.com/v1/people/~:(id,first-name,last-name,maiden-name,headline,location,industry,current-share,summary,specialties,positions,picture-url,picture-urls,email-address)?format=json',
             headers: {
                 Connection: 'Keep-Alive',
                 authorization: `Bearer ${results.access_token}`
             }
         };
-        //
+
         request(options,function(error, response, body) {
             console.log(`this request thing works`);
             console.log(results);
             res.send(body);
         })
-
-        // return res.redirect('/');
     });
 });
 
