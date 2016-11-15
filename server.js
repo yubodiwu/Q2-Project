@@ -9,6 +9,7 @@ const express = require('express');
 const passport = require('passport');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
+const request = require('request');
 const PORT = 3000;
 const app = express();
 
@@ -18,7 +19,9 @@ const LINKEDIN_SECRET = 'D3eYexpjUeGj786l';
 var scope = ['r_basicprofile'];
 
 app.set('view engine', 'ejs');
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
 app.use(cookieParser());
 
 var Linkedin = require('node-linkedin')(LINKEDIN_KEY, LINKEDIN_SECRET);
@@ -36,22 +39,35 @@ app.get('/oauth/linkedin', function(req, res) {
 });
 
 app.get('/oauth/linkedin/callback', function(req, res) {
+    console.log(`oauth get request is hit`);
     Linkedin.auth.getAccessToken(res, req.query.code, req.query.state, function(err, results) {
-        if ( err )
-            return console.error(err);
+        if (err) return console.error(err);
 
         var accessToken = results;
+        console.log(results);
+        var options = {
+            url: 'api.linkedin.com/v1/people',
+            headers: {
+                authorization: `Bearer ${results}`
+            }
+        };
+        //
+        request(options,function(error, response, body) {
+            console.log(`this request thing works`);
+            console.log(body);
+            res.send('response was sent');
+        })
 
-        return res.redirect('/');
+        // return res.redirect('/');
     });
 });
 
 
 
-app.get("/", function(req,res){
-  res.render('../views/index');
+app.get("/", function(req, res) {
+    res.render('../views/index');
 });
 
-app.listen(PORT, function(){
-  console.log(`You are using port ${PORT}`);
+app.listen(PORT, function() {
+    console.log(`You are using port ${PORT}`);
 });
