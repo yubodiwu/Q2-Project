@@ -16,15 +16,6 @@ module.exports = {
         }
     },
 
-    // developmentCompanies: {
-    //     client: 'postgresql',
-    //     connection: 'postgres://localhost/companies_dev',
-    //     pool: {
-    //         min: 1,
-    //         max: 1
-    //     }
-    // },
-
     test: {
         client: 'postgresql',
         connection: 'postgres://localhost/q2project_test',
@@ -33,14 +24,5 @@ module.exports = {
             max: 1
         }
     },
-
-    // testCompanies: {
-    //     client: 'postgresql',
-    //     connection: 'postgres://localhost/companies_test',
-    //     pool: {
-    //         min: 1,
-    //         max: 1
-    //     }
-    // },
 
 };
