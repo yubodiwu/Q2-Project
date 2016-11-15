@@ -20,18 +20,19 @@ exports.up = function(knex, Promise) {
         }),
         knex.schema.createTable('users', function(table) {
             table.increments('id').primary();
-            table.string('first_name').notNullable().defaultTo('');
-            table.string('last_name').notNullable().defaultTo('');
-            table.string('maiden_name').notNullable().defaultTo('');
+            table.string('linkedin_id').notNullable().defaultTo('');
+            table.string('firstName').notNullable().defaultTo('');
+            table.string('lastName').notNullable().defaultTo('');
+            // table.string('maiden_name').notNullable().defaultTo('');
             table.string('headline').notNullable().defaultTo('');
             table.string('location').notNullable().defaultTo('');
             table.string('industry').notNullable().defaultTo('');
-            table.string('currentShare').notNullable().defaultTo('');
-            table.string('summary').notNullable().defaultTo('');
-            table.string('specialties').notNullable().defaultTo('');
+            // table.string('currentShare').notNullable().defaultTo('');
+            // table.string('summary').notNullable().defaultTo('');
+            // table.string('specialties').notNullable().defaultTo('');
             table.string('positions').notNullable().defaultTo('');
-            table.string('picUrl').notNullable().defaultTo('');
-            table.string('profileUrl').notNullable().defaultTo('');
+            table.string('pictureUrl').notNullable().defaultTo('');
+            // table.string('profileUrl').notNullable().defaultTo('');
         })
     ]);
 };
