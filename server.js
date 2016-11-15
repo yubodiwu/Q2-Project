@@ -9,11 +9,14 @@ const express = require('express');
 const passport = require('passport');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
+const knex = require('./node_modules/knex');
 const request = require('request');
 const PORT = 3000;
 const app = express();
 
 const oauth = require('./routes/oauth');
+const users = require('./routes/users');
+const companies = require('./routes/companies');
 
 // const LINKEDIN_KEY = '86tft9s9hjwsa5';
 // const LINKEDIN_SECRET = 'D3eYexpjUeGj786l';
@@ -27,6 +30,8 @@ app.use(bodyParser.urlencoded({
 app.use(cookieParser());
 
 app.use('/oauth', oauth);
+app.use('/users', users);
+app.use('/companies', companies);
 
 // var Linkedin = require('node-linkedin')(LINKEDIN_KEY, LINKEDIN_SECRET);
 //

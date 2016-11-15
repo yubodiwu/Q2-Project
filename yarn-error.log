@@ -1,11 +1,11 @@
 Arguments: 
-  /usr/local/bin/node /usr/local/bin/yarn add node-linkedin
+  /usr/local/bin/node /usr/local/bin/yarn add knex
 
 PATH: 
   /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
 
 Yarn version: 
-  0.16.1
+  0.17.0
 
 Node version: 
   6.9.1
@@ -37,6 +37,7 @@ npm manifest:
       "global": "^4.3.1",
       "knex": "^0.12.6",
       "mocha": "^3.1.2",
+      "node-linkedin": "^0.5.4",
       "passport": "^0.3.2",
       "passport-linkedin-oauth2": "^1.4.1",
       "pg": "^6.1.0"
@@ -44,9 +45,6 @@ npm manifest:
   }
 
 yarn manifest: 
-  No manifest
-
-bower manifest: 
   No manifest
 
 Lockfile: 
@@ -1109,13 +1107,13 @@ Lockfile:
 
 Trace: 
   TypeError: Cannot read property 'split' of undefined
-      at Object.explodeHashedUrl (/usr/local/lib/node_modules/yarn/lib/util/version.js:8:20)
-      at PackageRequest.getLocked (/usr/local/lib/node_modules/yarn/lib/package-request.js:133:59)
-      at /usr/local/lib/node_modules/yarn/lib/resolvers/registries/npm-resolver.js:175:37
+      at Object.explodeHashedUrl (/usr/local/Cellar/yarn/0.17.0/libexec/lib/node_modules/yarn/lib/util/version.js:8:20)
+      at PackageRequest.getLocked (/usr/local/Cellar/yarn/0.17.0/libexec/lib/node_modules/yarn/lib/package-request.js:133:59)
+      at /usr/local/Cellar/yarn/0.17.0/libexec/lib/node_modules/yarn/lib/resolvers/registries/npm-resolver.js:181:37
       at next (native)
-      at step (/usr/local/lib/node_modules/yarn/node_modules/babel-runtime/helpers/asyncToGenerator.js:17:30)
-      at /usr/local/lib/node_modules/yarn/node_modules/babel-runtime/helpers/asyncToGenerator.js:35:14
-      at Promise.F (/usr/local/lib/node_modules/yarn/node_modules/core-js/library/modules/_export.js:35:28)
-      at /usr/local/lib/node_modules/yarn/node_modules/babel-runtime/helpers/asyncToGenerator.js:14:12
-      at NpmResolver.resolve (/usr/local/lib/node_modules/yarn/lib/resolvers/registries/npm-resolver.js:210:7)
-      at /usr/local/lib/node_modules/yarn/lib/package-request.js:188:23
+      at step (/usr/local/Cellar/yarn/0.17.0/libexec/lib/node_modules/yarn/node_modules/babel-runtime/helpers/asyncToGenerator.js:17:30)
+      at /usr/local/Cellar/yarn/0.17.0/libexec/lib/node_modules/yarn/node_modules/babel-runtime/helpers/asyncToGenerator.js:35:14
+      at Promise.F (/usr/local/Cellar/yarn/0.17.0/libexec/lib/node_modules/yarn/node_modules/core-js/library/modules/_export.js:35:28)
+      at /usr/local/Cellar/yarn/0.17.0/libexec/lib/node_modules/yarn/node_modules/babel-runtime/helpers/asyncToGenerator.js:14:12
+      at NpmResolver.resolve (/usr/local/Cellar/yarn/0.17.0/libexec/lib/node_modules/yarn/lib/resolvers/registries/npm-resolver.js:216:7)
+      at /usr/local/Cellar/yarn/0.17.0/libexec/lib/node_modules/yarn/lib/package-request.js:188:23
