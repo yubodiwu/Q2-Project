@@ -21,6 +21,7 @@ class User {
         this.picUrl = picUrl;
         this.profileUrl = profileUrl;
         this.company = cumpany
+        this.email = email
     }
 
     toObject() {
@@ -37,7 +38,8 @@ class User {
             specialties: this.specialties,
             positions: this.positions,
             picUrl: this.picUrl,
-            profileUrl: this.profileUrl
+            profileUrl: this.profileUrl,
+            email: this.email
         }
     }
 }
