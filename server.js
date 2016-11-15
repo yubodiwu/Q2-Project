@@ -46,16 +46,17 @@ app.get('/oauth/linkedin/callback', function(req, res) {
         var accessToken = results;
         console.log(results);
         var options = {
-            url: 'api.linkedin.com/v1/people',
+            url: 'https://api.linkedin.com/v1/',
             headers: {
-                authorization: `Bearer ${results}`
+                Connection: 'Keep-Alive',
+                authorization: `Bearer ${results.access_token}`
             }
         };
         //
         request(options,function(error, response, body) {
             console.log(`this request thing works`);
-            console.log(body);
-            res.send('response was sent');
+            console.log(results);
+            res.send(body);
         })
 
         // return res.redirect('/');
