@@ -5,6 +5,8 @@
 // jshint browser: true
 // jshint mocha: true
 
+require('dotenv').load();
+
 module.exports = {
 
     development: {
