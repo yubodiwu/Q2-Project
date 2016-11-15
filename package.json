@@ -1,0 +1,12 @@
+{
+  "name": "Q2-Project",
+  "version": "1.0.0",
+  "main": "server.js",
+  "repository": "git@github.com:yubodiwu/Q2-Project.git",
+  "author": "Yubo Allan Diwu <yubo.diwu@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.14.0",
+    "knex": "^0.12.6"
+  }
+}
