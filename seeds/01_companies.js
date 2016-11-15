@@ -7,11 +7,18 @@
 
 exports.seed = function(knex, Promise) {
     // Deletes ALL existing entries
-    return knex('users').del()
+    return knex('companies').del()
         .then(function() {
-            return knex('users').insert([
+            return knex('companies').insert([
                 {
-                    // add something
+                    name: 'Google',
+                    email: 'google@gmail.com',
+                    industry: 'tech',
+                    website: 'www.google.com',
+                    status: 'awesome',
+                    logo_url: 'G',
+                    locations: 'everywhere'
                 }
-            ]);
+            ])
+        });
 };
