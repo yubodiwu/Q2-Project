@@ -1,0 +1,18 @@
+{
+  "name": "Q2-Project",
+  "version": "1.0.0",
+  "main": "server.js",
+  "repository": "git@github.com:yubodiwu/Q2-Project.git",
+  "author": "Yubo Allan Diwu <yubo.diwu@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "chai": "^3.5.0",
+    "cookie-parser": "^1.4.3",
+    "ejs": "^2.5.2",
+    "express": "^4.14.0",
+    "knex": "^0.12.6",
+    "node-linkedin": "^0.5.4",
+    "request": "^2.78.0"
+  }
+}
