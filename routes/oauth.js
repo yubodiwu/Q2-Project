@@ -12,7 +12,7 @@ const request = require('request');
 // const knex = require('../knex');
 var router = express.Router();
 
-var scope = ['r_basicprofile'];
+var scope = ['r_basicprofile', 'r_emailaddress'];
 
 var Linkedin = require('node-linkedin')(LINKEDIN_KEY, LINKEDIN_SECRET);
 
@@ -36,7 +36,8 @@ router.get('/linkedin/callback', function(req, res) {
         var accessToken = results;
         console.log(results);
         var options = {
-            url: 'https://api.linkedin.com/v1/',
+            url:
+            'https://api.linkedin.com/v1/people/~:(id,first-name,last-name,maiden-name,headline,location,industry,current-share,summary,specialties,positions,picture-url,picture-urls,email-address)?format=json',
             headers: {
                 Connection: 'Keep-Alive',
                 authorization: `Bearer ${results.access_token}`
@@ -48,8 +49,6 @@ router.get('/linkedin/callback', function(req, res) {
             console.log(results);
             res.send(body);
         })
-
-        // return res.redirect('/');
     });
 });
 
