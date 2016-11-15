@@ -9,17 +9,19 @@ const express = require('express');
 const passport = require('passport');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
+const request = require('request');
 const PORT = 3000;
 const app = express();
 
 const LINKEDIN_KEY = '86tft9s9hjwsa5';
 const LINKEDIN_SECRET = 'D3eYexpjUeGj786l';
 
-var accessToken;
 var scope = ['r_basicprofile'];
 
 app.set('view engine', 'ejs');
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
 app.use(cookieParser());
 
 var Linkedin = require('node-linkedin')(LINKEDIN_KEY, LINKEDIN_SECRET);
@@ -37,20 +39,36 @@ app.get('/oauth/linkedin', function(req, res) {
 });
 
 app.get('/oauth/linkedin/callback', function(req, res) {
+    console.log(`oauth get request is hit`);
     Linkedin.auth.getAccessToken(res, req.query.code, req.query.state, function(err, results) {
-        if ( err )
-            return console.error(err);
+        if (err) return console.error(err);
+
+        var accessToken = results;
         console.log(results);
-        return res.redirect('/');
+        var options = {
+            url: 'https://api.linkedin.com/v1/',
+            headers: {
+                Connection: 'Keep-Alive',
+                authorization: `Bearer ${results.access_token}`
+            }
+        };
+        //
+        request(options,function(error, response, body) {
+            console.log(`this request thing works`);
+            console.log(results);
+            res.send(body);
+        })
+
+        // return res.redirect('/');
     });
 });
 
 
 
-app.get("/", function(req,res){
-  res.render('../views/index');
+app.get("/", function(req, res) {
+    res.render('../views/index');
 });
 
-app.listen(PORT, function(){
-  console.log(`You are using port ${PORT}`);
+app.listen(PORT, function() {
+    console.log(`You are using port ${PORT}`);
 });
