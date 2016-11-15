@@ -18,11 +18,8 @@ const oauth = require('./routes/oauth');
 const users = require('./routes/users');
 const companies = require('./routes/companies');
 
-// const LINKEDIN_KEY = '86tft9s9hjwsa5';
-// const LINKEDIN_SECRET = 'D3eYexpjUeGj786l';
-//
-// var scope = ['r_basicprofile'];
 
+app.use(express.static(__dirname + '/public'));
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({
     extended: true
@@ -38,6 +35,7 @@ app.use('/companies', companies);
 // Linkedin.auth.setCallback('http://localhost:3000/');
 //
 // var linkedin = Linkedin.init('my_access_token');
+
 
 // app.get('/oauth/linkedin', function(req, res) {
 //     // This will ask for permisssions etc and redirect to callback url.
