@@ -21,17 +21,17 @@ describe('Users API', function() {
             });
     });
 
-    after((done) => {
-        knex.migrate.rollback()
-            .then(() => {
-                done();
-            })
-            .catch((err) => {
-                done(err);
-            });
-    });
+    // after((done) => {
+    //     knex.migrate.rollback()
+    //         .then(() => {
+    //             done();
+    //         })
+    //         .catch((err) => {
+    //             done(err);
+    //         });
+    // });
 
-    beforeEach(function(done) {
+    beforeEach((done) => {
         knex.seed.run()
             .then(function() {
                 done();
@@ -80,31 +80,35 @@ describe('Users API', function() {
             });
     });
     it('POST / should create user', function(done) {
-        request.post('/api/v1/movies')
-            // .expect(200)
-            .send({
-                "id": 6,
-                "linkedin_id": "fuutrzW8XY",
-                "firstName": "Zach",
-                "lastName": "Pellegrini",
-                "headline": "Galvanize Full Stack Student",
-                "location": "{\"country\":{\"code\":\"us\"},\"name\":\"San Francisco Bay Area\"}",
-                "industry": "Computer Software",
-                "positions": "{\"_total\":0}",
-                "pictureUrl": "https://media.licdn.com/mpr/mprx/0_m8msvsotWQ6Ev7WxhFHdv4d2WhieBo4xhXsLv4dunLcMemf0GQYnRZgCbm_nqDJP7_uksxcjTWBi"
-            }).end(function(err, res) {
+        var id = 7;
+        var sendObj = {
+            "linkedin_id": "fuutrzW8XY",
+            "firstName": "Zach",
+            "lastName": "Pellegrini",
+            "headline": "Galvanize Full Stack Student",
+            "location": "{\"country\":{\"code\":\"us\"},\"name\":\"San Francisco Bay Area\"}",
+            "industry": "Computer Software",
+            "positions": "{\"_total\":0}",
+            "pictureUrl": "https://media.licdn.com/mpr/mprx/0_m8msvsotWQ6Ev7WxhFHdv4d2WhieBo4xhXsLv4dunLcMemf0GQYnRZgCbm_nqDJP7_uksxcjTWBi"
+        }
+        request.post('/users')
+            .expect(200)
+            .send(sendObj).end(function(err, res) {
                 if (err) return done(err);
-                expect(res.body.id).to.be.equal(3);
+                console.log(`first name is ${res.body.firstName}`);
+                expect(res.body.id).to.be.equal(7);
                 expect(res.body.firstName).to.be.equal('Zach');
                 expect(res.body.headline).to.be.equal('Galvanize Full Stack Student');
                 expect(res.body.industry).to.be.equal('Computer Software');
                 done();
             });
+
         knex('users')
             .select('*')
-            .where('id', 3)
+            .where('id', 7)
             .returning('*')
             .then(function(user) {
+                console.log('user is ');
                 console.log(user);
                 expect(user[0].firstName).to.be.equal('Zach');
                 done();
