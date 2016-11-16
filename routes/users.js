@@ -11,6 +11,7 @@ var router = express.Router();
 
 // index
 router.get(`/`, function(req, res) {
+    console.log(`index route is hit`);
     knex('users')
         .select('*')
         .returning('*')
@@ -47,7 +48,7 @@ router.post(`/`, function(req, res) {
             console.log(user);
             res.send(user[0]);
         })
-        .catch(function(err) {
+        .catch(function(err ) {
             console.log('post error: ' + err);
         })
 });
