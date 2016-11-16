@@ -15,14 +15,13 @@ router.get(`/`, function(req, res) {
         .select('*')
         .returning('*')
         .then(function(users) {
-            console.log('do I get here?');
-            res.send(users)
+            res.send(users);
         });
 });
 
 // new
 router.get(`/new`, function(req, res) {
-    console.log(req.body);
+    // console.log(req.body);
 });
 
 // show
@@ -32,8 +31,25 @@ router.get(`/:id`, function(req, res) {
         .where('id',req.params.id)
         .returning('*')
         .then(function(user) {
-            res.send(user);
+            // console.log(user);
+            res.send(user[0]);
         });
+});
+
+router.post(`/`, function(req, res) {
+    console.log(`post route is hit`);
+    console.log(`\n\nreq.body is`);
+    console.log(req.body);
+    knex('users')
+        .insert(req.body)
+        .returning('*')
+        .then(function(user) {
+            console.log(user);
+            res.send(user[0]);
+        })
+        .catch(function(err) {
+            console.log('post error: ' + err);
+        })
 });
 
 module.exports = router;

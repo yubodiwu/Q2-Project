@@ -14,7 +14,7 @@ const {
     suite,
     test
 } = require('mocha');
-const knex = require('../node_modules/knex');
+const knex = require('../db/knex');
 
 suite('migrations', () => {
     before((done) => {
@@ -70,31 +70,31 @@ suite('migrations', () => {
                     },
 
                     website: {
-                        type: 'text',
-                        maxLength: null,
+                        type: 'character varying',
+                        maxLength: 255,
                         nullable: false,
-                        defaultValue: '\'\'::text'
+                        defaultValue: '\'\'::character varying'
                     },
 
                     status: {
-                        type: 'text',
-                        maxLength: null,
+                        type: 'character varying',
+                        maxLength: 255,
                         nullable: false,
-                        defaultValue: '\'\'::text'
+                        defaultValue: '\'\'::character varying'
                     },
 
                     logo_url: {
-                        type: 'timestamp with time zone',
-                        maxLength: null,
+                        type: 'character varying',
+                        maxLength: 255,
                         nullable: false,
-                        defaultValue: 'now()'
+                        defaultValue: '\'\'::character varying'
                     },
 
                     locations: {
-                        type: 'Array',
-                        maxLength: null,
+                        type: 'character varying',
+                        maxLength: 255,
                         nullable: false,
-                        defaultValue: '[]'
+                        defaultValue: '\'\'::character varying'
                     },
 
                     updated_at: {
