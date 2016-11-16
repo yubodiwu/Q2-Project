@@ -21,15 +21,15 @@ describe('Users API', function() {
             });
     });
 
-    after((done) => {
-        knex.migrate.rollback()
-            .then(() => {
-                done();
-            })
-            .catch((err) => {
-                done(err);
-            });
-    });
+    // after((done) => {
+    //     knex.migrate.rollback()
+    //         .then(() => {
+    //             done();
+    //         })
+    //         .catch((err) => {
+    //             done(err);
+    //         });
+    // });
 
     beforeEach((done) => {
         knex.seed.run()
@@ -80,9 +80,8 @@ describe('Users API', function() {
             });
     });
     it('POST / should create user', function(done) {
-        var id = 8;
+        var id = 7;
         var sendObj = {
-            "id": id,
             "linkedin_id": "fuutrzW8XY",
             "firstName": "Zach",
             "lastName": "Pellegrini",
@@ -92,24 +91,25 @@ describe('Users API', function() {
             "positions": "{\"_total\":0}",
             "pictureUrl": "https://media.licdn.com/mpr/mprx/0_m8msvsotWQ6Ev7WxhFHdv4d2WhieBo4xhXsLv4dunLcMemf0GQYnRZgCbm_nqDJP7_uksxcjTWBi"
         }
-        console.log(sendObj);
         request.post('/users')
             .expect(200)
             .send(sendObj).end(function(err, res) {
                 if (err) return done(err);
-
-                expect(res.body.id).to.be.equal(id);
+                console.log(`first name is ${res.body.firstName}`);
+                expect(res.body.id).to.be.equal(7);
                 expect(res.body.firstName).to.be.equal('Zach');
                 expect(res.body.headline).to.be.equal('Galvanize Full Stack Student');
                 expect(res.body.industry).to.be.equal('Computer Software');
                 done();
             });
+
         knex('users')
             .select('*')
-            .where('id', id)
+            .where('id', 7)
             .returning('*')
             .then(function(user) {
-                // console.log(user);
+                console.log('user is ');
+                console.log(user);
                 expect(user[0].firstName).to.be.equal('Zach');
                 done();
             })

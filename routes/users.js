@@ -22,7 +22,7 @@ router.get(`/`, function(req, res) {
 
 // new
 router.get(`/new`, function(req, res) {
-    // console.log(req.body);
+    res.render('../views/create_user_form')
 });
 
 // show
@@ -37,6 +37,7 @@ router.get(`/:id`, function(req, res) {
         });
 });
 
+// create
 router.post(`/`, function(req, res) {
     console.log(`post route is hit`);
     console.log(`\n\nreq.body is`);
@@ -52,5 +53,28 @@ router.post(`/`, function(req, res) {
             console.log('post error: ' + err);
         })
 });
+
+// update
+router.put(`/:id`, function(req, res) {
+    knex('users')
+        .where('id', req.params.id)
+        .update(req.body)
+        .returning('*')
+        .then(function(user) {
+            res.send(user[0]);
+        })
+});
+
+// delete
+router.delete(`/:id`, function(req, res) {
+    console.log('delete route is hit');
+    knex('users')
+        .where('id', req.params.id)
+        .del()
+        .then(function(user) {
+            res.send(true)
+        })
+        .done();
+})
 
 module.exports = router;
