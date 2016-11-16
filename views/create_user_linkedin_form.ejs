@@ -4,44 +4,57 @@
 <head>
     <meta charset="utf-8">
     <title></title>
+    <link rel="stylesheet" href="/css/linkedin_create_profile.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+    <script type="text/javascript" src="/javascript/createProfile.js"></script>
 </head>
 
 <body>
     <div id="container" class="row">
         <div class="col m3 left"></div>
         <div class="col m6 center">
-            <div id="main">
-                <div id="headshot"></div>
-                <div>
+            <div id="main" class = "z-depth-5">
+                <div id="headshot">
+                    <img src="<%=newUser.profilePictureUrl%>" height="200xp" width="200px" alt="">
+                </div>
+                <div id = "user_information">
                     <p>
-                        hello
+                        <%=newUser.firstName + " " + newUser.lastName%>
 
                     </p>
                     <p>
-                        positions
+                        <%=newUser.headline%>
                     </p>
                     <p>
-                        location
+                        <%=newUser.location%>
                     </p>
                     <p>
-                        industry
+                        <%=newUser.industry%>
                     </p>
                     <button>Request meeting</button>
                 </div>
             </div>
             <div id="experience">
-                <h3>Experience</h3>
-                <p>
-                    resume
-                </p>
-            </div>
-            <div>
-                <h3>skills</h3>
-                <p>
-                    skills
-                </p>
+                <form action="" method="post">
+                    <label for="Resume"></label>
+                    <div class="file-field input-field">
+                        <div class="btn light-blue darken-1">
+                            <span>Resume</span>
+                            <input type="file" name="resumes" multiple>
+                        </div>
+                        <div class="file-path-wrapper">
+                            <input class="file-path validate" type="text" placeholder="Upload resume">
+                        </div>
+                    </div>
+
+                    <div id = "added_skills"></div>
+                    <div>
+                        <label for="skills">skills</label>
+                        <input id = "add_skill" type="text" name="skills">
+                        <input id = "add_button" class = "btn-floating btn-large waves-effect waves-light light-blue darken-1" type="button" value="add">
+                    </div>
+                </form>
             </div>
         </div>
         <div class="col m3 right"></div>

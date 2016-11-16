@@ -47,9 +47,11 @@ router.get('/linkedin/callback', function(req, res) {
         var newUser = new user("")
         request(options,function(error, response, body) {
             console.log(`this request thing works`);
-            console.log(results);
-            console.log(body);
-            res.render("../views/create_user_linkedin_form");
+            console.log(typeof body)
+            var bodyJson = JSON.parse(body);
+            var newUser = new user({linkedinId:bodyJson.id,firstName:bodyJson.firstName,headline:bodyJson.headline,lastName:bodyJson.lastName,industry:bodyJson.industry,pictureUrl:bodyJson.pictureUrl,emailAddress:bodyJson.emailAddress});
+            console.log("new user", newUser);
+            res.render("../views/create_user_linkedin_form", {newUser:newUser});
         })
     });
 });
