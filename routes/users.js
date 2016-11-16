@@ -14,8 +14,7 @@ router.get(`/`, function(req, res) {
         .select('*')
         .returning('*')
         .then(function(users) {
-            console.log('do I get here?');
-            res.send(users)
+            res.send(users);
         });
 });
 
