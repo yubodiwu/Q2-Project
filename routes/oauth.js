@@ -10,6 +10,7 @@ const LINKEDIN_SECRET = 'D3eYexpjUeGj786l';
 const express = require('express');
 const request = require('request');
 // const knex = require('../knex');
+const user = require('../models/user')
 var router = express.Router();
 
 var scope = ['r_basicprofile', 'r_emailaddress'];
@@ -43,10 +44,11 @@ router.get('/linkedin/callback', function(req, res) {
                 authorization: `Bearer ${results.access_token}`
             }
         };
-        //
+        var newUser = new user("")
         request(options,function(error, response, body) {
             console.log(`this request thing works`);
             console.log(results);
+            console.log(body);
             res.render("../views/create_user_linkedin_form");
         })
     });
