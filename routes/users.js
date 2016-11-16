@@ -11,7 +11,7 @@ var router = express.Router();
 
 // index
 router.get(`/`, function(req, res) {
-    console.log(`index route is hit`);
+    console.log(`users index route is hit`);
     knex('users')
         .select('*')
         .returning('*')
@@ -27,6 +27,8 @@ router.get(`/new`, function(req, res) {
 
 // show
 router.get(`/:id`, function(req, res) {
+    console.log('users show route is hit');
+
     knex('users')
         .select('*')
         .where('id',req.params.id)
@@ -39,9 +41,8 @@ router.get(`/:id`, function(req, res) {
 
 // create
 router.post(`/`, function(req, res) {
-    console.log(`post route is hit`);
-    console.log(`\n\nreq.body is`);
-    console.log(req.body);
+    console.log(`users create route is hit`);
+
     knex('users')
         .insert(req.body)
         .returning('*')
@@ -56,6 +57,8 @@ router.post(`/`, function(req, res) {
 
 // update
 router.put(`/:id`, function(req, res) {
+    console.log('users update route is hit');
+
     knex('users')
         .where('id', req.params.id)
         .update(req.body)

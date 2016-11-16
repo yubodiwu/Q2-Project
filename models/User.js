@@ -15,31 +15,35 @@ class User {
         this.headline = request.headline;
         this.location = "San Francisco Bay Area";
         this.industry = request.industry;
-        this.currentShare = request.currentShare;
+        // this.currentShare = request.currentShare;
         this.summary = request.summary;
         this.specialties = request.specialties;
         this.profilePictureUrl = request.pictureUrl;
         this.company = request.company;
         this.email = request.emailAddress;
+        this.hashedPw = request.hashedPw;
     }
 
     toObject() {
         return {
             id: this.id,
-            firstName: this.firstName,
-            lastNAme: this.lastName,
-            maidenName: this.maidenName,
+            first_name: this.firstName,
+            last_name: this.lastName,
             headline: this.headline,
             location: this.location,
             industry: this.industry,
-            currentShare: this.currentShare,
+            // current_share: this.currentShare,
             summary: this.summary,
             specialties: this.specialties,
             positions: this.positions,
-            picUrl: this.picUrl,
-            profileUrl: this.profileUrl,
-            email: this.email
-        }
+            pic_url: this.picUrl,
+            email: this.email,
+            hashed_pw: this.hashedPw
+        };
+    }
+
+    postToDB() {
+
     }
 }
 
