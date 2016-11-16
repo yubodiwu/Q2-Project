@@ -15,7 +15,7 @@ exports.up = function(knex, Promise) {
             table.string('website').notNullable().defaultTo('');
             table.string('status').notNullable().defaultTo('');
             table.string('logo_url').notNullable().defaultTo('');
-            table.string('locations').notNullable().defaultTo([]);
+            table.string('locations').notNullable().defaultTo('');
             table.timestamp('updated_at').notNullable().defaultTo(knex.fn.now());
         }),
         knex.schema.createTable('users', function(table) {

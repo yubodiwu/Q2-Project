@@ -36,3 +36,5 @@ app.get("/", function(req, res) {
 app.listen(PORT, function() {
     console.log(`You are using port ${PORT}`);
 });
+
+module.exports = app;
