@@ -33,8 +33,4 @@ router.get(`/:id`, function(req, res) {
         });
 });
 
-router.get(`/users/:id`, function(req, res) {
-    // this should be the show request
-});
-
 module.exports = router;
