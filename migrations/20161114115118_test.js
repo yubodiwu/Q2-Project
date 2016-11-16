@@ -33,12 +33,17 @@ exports.up = function(knex, Promise) {
             table.string('positions').notNullable().defaultTo('');
             table.string('pictureUrl').notNullable().defaultTo('');
             // table.string('profileUrl').notNullable().defaultTo('');
+        }),
+        knex.schema.createTable('connections', function(table) {
+            table.integer('user_id').notNullable().references('id').inTable('users').onDelete('cascade');
+            table.integer('connection_id').notNullable().references('id').inTable('users').onDelete('cascade');
         })
     ]);
 };
 
 exports.down = function(knex, Promise) {
     return Promise.all([
+        knex.schema.dropTable('connections'),
         knex.schema.dropTable('users'),
         knex.schema.dropTable('companies')
     ]);

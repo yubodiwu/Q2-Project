@@ -6,23 +6,23 @@
 // jshint mocha: true
 
 class User {
-    constructor(id, firstName, lastName, maidenName, headline, location, industry, currentShare, summary, specialties, positions, picUrl, profileUrl, company, linkedinId, email) {
-        this.id = id;
-        this.linkedinId = linkedinId
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.maidenName = maidenName;
-        this.headline = headline;
-        this.location = location;
-        this.industry = industry;
-        this.currentShare = currentShare;
-        this.summary = summary;
-        this.specialties = specialties;
-        this.positions = positions;
-        this.picUrl = picUrl;
-        this.profileUrl = profileUrl;
-        this.company = company
-        this.email = email
+    constructor(request) {
+        this.id = request.id;
+        this.linkedinId = request.linkedinId
+        this.firstName = request.firstName;
+        this.lastName = request.lastName;
+        this.maidenName = request.maidenName;
+        this.headline = request.headline;
+        this.location = request.location;
+        this.industry = request.industry;
+        this.currentShare = request.currentShare;
+        this.summary = request.summary;
+        this.specialties = request.specialties;
+        this.positions = request.positions;
+        this.picUrl = request.picUrl;
+        this.profileUrl = request.profileUrl;
+        this.company = request.company
+        this.email = request.email
     }
 
     toObject() {
