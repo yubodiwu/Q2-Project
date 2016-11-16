@@ -9,6 +9,7 @@ const express = require('express');
 const knex = require('../db/knex');
 var router = express.Router();
 
+// index
 router.get(`/`, function(req, res) {
     knex('users')
         .select('*')
@@ -18,10 +19,12 @@ router.get(`/`, function(req, res) {
         });
 });
 
+// new
 router.get(`/new`, function(req, res) {
     console.log(req.body);
 });
 
+// show
 router.get(`/:id`, function(req, res) {
     knex('users')
         .select('*')
