@@ -31,7 +31,7 @@ describe('Users API', function() {
             });
     });
 
-    beforeEach(function(done) {
+    beforeEach((done) => {
         knex.seed.run()
             .then(function() {
                 done();
@@ -80,10 +80,10 @@ describe('Users API', function() {
             });
     });
     it('POST / should create user', function(done) {
-        request.post('/api/v1/movies')
-            // .expect(200)
+        request.post('/users')
+            .expect(200)
             .send({
-                "id": 6,
+                "id": 8,
                 "linkedin_id": "fuutrzW8XY",
                 "firstName": "Zach",
                 "lastName": "Pellegrini",
@@ -105,7 +105,7 @@ describe('Users API', function() {
             .where('id', 3)
             .returning('*')
             .then(function(user) {
-                console.log(user);
+                // console.log(user);
                 expect(user[0].firstName).to.be.equal('Zach');
                 done();
             })
