@@ -7,22 +7,20 @@
 
 class User {
     constructor(request) {
+      console.log(request)
         this.id = request.id;
         this.linkedinId = request.linkedinId
         this.firstName = request.firstName;
         this.lastName = request.lastName;
-        this.maidenName = request.maidenName;
         this.headline = request.headline;
-        this.location = request.location;
+        this.location = "San Francisco Bay Area";
         this.industry = request.industry;
         this.currentShare = request.currentShare;
         this.summary = request.summary;
         this.specialties = request.specialties;
-        this.positions = request.positions;
-        this.picUrl = request.picUrl;
-        this.profileUrl = request.profileUrl;
-        this.company = request.company
-        this.email = request.email
+        this.profilePictureUrl = request.pictureUrl;
+        this.company = request.company;
+        this.email = request.emailAddress;
     }
 
     toObject() {

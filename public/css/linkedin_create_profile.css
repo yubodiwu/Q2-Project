@@ -1,0 +1,13 @@
+#headshot {
+    float: left;
+}
+
+#main {
+  margin-top: 10vh;
+  height: 200px;
+  background-color: white;
+  font-size: 1.5em;
+}
+#user_information{
+  float:left;
+}
