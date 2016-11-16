@@ -47,7 +47,7 @@ router.get('/linkedin/callback', function(req, res) {
         request(options,function(error, response, body) {
             console.log(`this request thing works`);
             console.log(results);
-            res.send(body);
+            res.render("../views/create_user_linkedin_form");
         })
     });
 });
