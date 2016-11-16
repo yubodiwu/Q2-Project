@@ -14,7 +14,7 @@ const {
     suite,
     test
 } = require('mocha');
-const knex = require('../node_modules/knex');
+const knex = require('../db/knex');
 
 suite('migrations', () => {
     before((done) => {
