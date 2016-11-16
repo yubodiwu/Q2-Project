@@ -21,8 +21,8 @@ exports.up = function(knex, Promise) {
         knex.schema.createTable('users', function(table) {
             table.increments('id').primary();
             table.string('linkedin_id').notNullable().defaultTo('');
-            table.string('firstName').notNullable().defaultTo('');
-            table.string('lastName').notNullable().defaultTo('');
+            table.string('first_name').notNullable().defaultTo('');
+            table.string('last_name').notNullable().defaultTo('');
             // table.string('maiden_name').notNullable().defaultTo('');
             table.string('headline').notNullable().defaultTo('');
             table.string('location').notNullable().defaultTo('');
@@ -31,7 +31,7 @@ exports.up = function(knex, Promise) {
             // table.string('summary').notNullable().defaultTo('');
             // table.string('specialties').notNullable().defaultTo('');
             table.string('positions').notNullable().defaultTo('');
-            table.string('pictureUrl').notNullable().defaultTo('');
+            table.string('picture_url').notNullable().defaultTo('');
             // table.string('profileUrl').notNullable().defaultTo('');
         }),
         knex.schema.createTable('connections', function(table) {
