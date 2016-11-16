@@ -17,6 +17,7 @@ const oauth = require('./routes/oauth');
 const users = require('./routes/users');
 const companies = require('./routes/companies');
 const userForms = require('./routes/static_pages');
+const connections = require('./routes/connections');
 
 app.use(express.static(__dirname + '/public'));
 app.set('view engine', 'ejs');
@@ -29,7 +30,8 @@ app.use(cookieParser());
 app.use('/oauth', oauth);
 app.use('/users', users);
 app.use('/companies', companies);
-app.use('/form', userForms)
+app.use('/form', userForms);
+app.use('/connections', connections);
 
 app.get("/", function(req, res) {
     res.render('../views/index');
