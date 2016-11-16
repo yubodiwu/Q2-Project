@@ -1,14 +1,24 @@
-body{
-  height:830px;
+#container{
+  height:100vh;
   background-image:url("http://unsplash.com/photos/k_RYBedEvDw/download");
   background-size: 100% 100%;
   background-repeat: no-repeat;
 }
+.navBar{
+  z-index:10;
+}
+
 .login-class{
   margin-top: 13%;
 }
 
 .logo_image_login{
   margin-left: 2%;
-  margin-top:.5%;
+  margin-top:8%;
+}
+
+#loginButton{
+  padding: 0;
+  border: none;
+  background: none;
 }
