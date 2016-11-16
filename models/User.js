@@ -21,7 +21,7 @@ class User {
         this.positions = positions;
         this.picUrl = picUrl;
         this.profileUrl = profileUrl;
-        this.company = cumpany
+        this.company = company
         this.email = email
     }
 

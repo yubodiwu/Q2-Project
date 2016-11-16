@@ -1,0 +1,21 @@
+body{
+  background-image: url("http://unsplash.com/photos/8dD1XWJ0PYM/download");
+  background-size: 100% 100vh;
+  background-repeat: no-repeat;
+}
+
+.formContainer{
+  color:black;
+  background-color: white;
+  border-radius: 5px;
+}
+
+::-webkit-input-placeholder {
+   color: black;
+}
+input {
+  border-bottom: 1px solid blue;
+  -webkit-box-shadow: 0 1px 0 0 blue;
+  -moz-box-shadow: 0 1px 0 0 blue;
+  box-shadow: 0 1px 0 0 blue;
+}
