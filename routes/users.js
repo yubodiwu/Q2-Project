@@ -19,6 +19,20 @@ router.get(`/`, function(req, res) {
         });
 });
 
+router.get(`/new`, function(req, res) {
+    console.log(req.body);
+});
+
+router.get(`/:id`, function(req, res) {
+    knex('users')
+        .select('*')
+        .where('id',req.params.id)
+        .returning('*')
+        .then(function(user) {
+            res.send(user);
+        });
+});
+
 router.get(`/users/:id`, function(req, res) {
     // this should be the show request
 });

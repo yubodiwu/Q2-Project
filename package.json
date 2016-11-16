@@ -2,6 +2,14 @@
   "name": "Q2-Project",
   "version": "1.0.0",
   "main": "server.js",
+  "scripts": {
+    "heroku-postbuild": "knex migrate:latest",
+    "knex": "knex",
+    "lint": "eslint  --ignore-pattern public/js/vendor",
+    "nf": "nf start",
+    "start": "nodemon server.js",
+    "test": "mocha"
+  },
   "repository": "git@github.com:yubodiwu/Q2-Project.git",
   "author": "Yubo Allan Diwu <yubo.diwu@gmail.com>",
   "license": "MIT",
@@ -17,6 +25,7 @@
     "node-linkedin": "^0.5.4",
     "pg": "^6.1.0",
     "request": "^2.78.0",
-    "sqlite": "^2.2.3"
+    "sqlite": "^2.2.3",
+    "supertest": "^2.0.1"
   }
 }
