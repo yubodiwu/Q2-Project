@@ -42,11 +42,12 @@ router.post(`/session`, function(req, res, next) {
         .then(() => {
             delete user.hashedPassword;
 
-            req.session.userId = user.id;
-            console.log(`req session id `, req.session.userId);
+            req.session.user = user;
+            console.log(`req session`);
             console.log(req.session);
+            var stringSession = JSON.stringify(user);
 
-            res.redirect('/search/contact');
+            res.redirect(`/users/search/contact?valid=${stringSession}`);
         })
         .catch(bcrypt.MISMATCH_ERROR, () => {
             throw boom.create(400, 'Bad email or password');

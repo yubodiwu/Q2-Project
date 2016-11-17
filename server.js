@@ -4,11 +4,12 @@
 // jshint node: true
 // jshint browser: true
 // jshint mocha: true
-
+var num = 0;
 const express = require('express');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const cookieSession = require('cookie-session');
+
 const knex = require('./node_modules/knex');
 const request = require('request');
 const PORT = 3000;
@@ -32,11 +33,18 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 app.use(cookieParser());
+app.set('trust proxy', 1)
 app.use(cookieSession({
     name: 'session',
-    keys: [process.env.SESSION_SECRET],
+    keys: [process.env.SESSION_SECRET, 1, 2, 3],
     secret: process.env.SESSION_SECRET
 }));
+app.use(`/`, function(req, res, next) {
+    console.log(`seeing session ${num}`);
+    console.log(req.session);
+    num++;
+    next();
+})
 
 app.use('/oauth', oauth);
 app.use('/users', users);
