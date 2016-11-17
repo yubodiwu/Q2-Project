@@ -21,9 +21,12 @@ exports.seed = function(knex, Promise) {
                     },
                     "name": "San Francisco Bay Area"
                 },
-                "pic_url": "https://media.licdn.com/mpr/mprx/0_m8msvsotWQ6Ev7WxhFHdv4d2WhieBo4xhXsLv4dunLcMemf0GQYnRZgCbm_nqDJP7_uksxcjTWBi",
+                "pic_url": "https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/8/005/090/289/3ca32fd.jpg",
                 "email": "trevorpellegrini@gmail.com",
-                "hashed_password": "$2a$12$NBfl8kdg099B5o67963vyuIerPIMivznOz/TapPNDEfqHe.EVo05u"
+                "hashed_password": "$2a$12$NBfl8kdg099B5o67963vyuIerPIMivznOz/TapPNDEfqHe.EVo05u",
+                "skills": {
+                  "skills":["javascript","Software Dev","Node.js","Golf", "Marketo","salesforce.com","awesomeness"]
+                }
             }, {
                 "first_name": "Yubo",
                 "headline": "Galvanize Full Stack Student",
@@ -36,9 +39,12 @@ exports.seed = function(knex, Promise) {
                     },
                     "name": "San Francisco Bay Area"
                 },
-                "pic_url": "",
+                "pic_url": "https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/5/005/095/0a8/299b207.jpg",
                 "email": "yubo.diwu@gmail.com",
-                "hashed_password": "$2a$12$NBfl8kdg099B5o67963vyuIerPIMivznOz/TapPNDEfqHe.EVo05u"
+                "hashed_password": "$2a$12$NBfl8kdg099B5o67963vyuIerPIMivznOz/TapPNDEfqHe.EVo05u",
+                "skills": {
+                  "skills":["javascript","Software Dev","Node.js","Recursion", "Civil Engineering","awesomeness"]
+                }
             }, {
                 "first_name": "Mikey",
                 "headline": "Smashed",
@@ -51,8 +57,11 @@ exports.seed = function(knex, Promise) {
                     },
                     "name": "San Francisco Bay Area"
                 },
-                "pic_url": "",
-                "hashed_password": "$2a$12$NBfl8kdg099B5o67963vyuIerPIMivznOz/TapPNDEfqHe.EVo05u"
+                "pic_url": "https://scontent-lga3-1.xx.fbcdn.net/t31.0-8/1548159_10153744860430623_1596799000_o.jpg",
+                "hashed_password": "$2a$12$NBfl8kdg099B5o67963vyuIerPIMivznOz/TapPNDEfqHe.EVo05u",
+                "skills": {
+                  "skills":["Fatigue","javascript","Software Dev","Node.js","awesomeness"]
+                }
             }]);
         })
         .then(function() {
