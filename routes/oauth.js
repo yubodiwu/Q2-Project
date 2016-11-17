@@ -10,7 +10,7 @@ const LINKEDIN_SECRET = 'D3eYexpjUeGj786l';
 const express = require('express');
 const request = require('request');
 // const knex = require('../knex');
-const user = require('../models/user')
+const User = require('../models/user')
 var router = express.Router();
 
 var scope = ['r_basicprofile', 'r_emailaddress'];
@@ -25,8 +25,6 @@ router.get('/linkedin', function(req, res) {
     // This will ask for permisssions etc and redirect to callback url.
     Linkedin.setCallback(req.protocol + '://' + req.headers.host + '/oauth/linkedin/callback')
     Linkedin.auth.authorize(res, scope);
-    console.log("header", req.headers.host);
-    console.log("req.protocol", req.protocol);
 });
 
 router.get('/linkedin/callback', function(req, res) {
@@ -35,7 +33,6 @@ router.get('/linkedin/callback', function(req, res) {
         if (err) return console.error(err);
 
         var accessToken = results;
-        console.log(results);
         var options = {
             url: 'https://api.linkedin.com/v1/people/~:(id,first-name,last-name,maiden-name,headline,location,industry,current-share,summary,specialties,positions,picture-url,picture-urls,email-address)?format=json',
             headers: {
@@ -43,12 +40,10 @@ router.get('/linkedin/callback', function(req, res) {
                 authorization: `Bearer ${results.access_token}`
             }
         };
-        var newUser = new user("")
+        var newUser = new User("")
         request(options, function(error, response, body) {
-            console.log(`this request thing works`);
-            console.log(typeof body)
             var bodyJson = JSON.parse(body);
-            var newUser = new user({
+            var newUser = new User({
                 linkedinId: bodyJson.id,
                 firstName: bodyJson.firstName,
                 headline: bodyJson.headline,
@@ -58,11 +53,11 @@ router.get('/linkedin/callback', function(req, res) {
                 emailAddress: bodyJson.emailAddress,
                 password: `asdfjklwlkewijorbhoqwarijgvjwkqlgwijejifejk;fkljadj;kfqwjef`
             });
-            newUser.postToDB(response);
-            console.log("new user", newUser);
-            res.render("../views/create_user_linkedin_form", {
-                newUser: newUser
-            });
+            newUser.postToDB(res);
+            // res.redirect(`/users/search/contact`)
+            // res.render("../views/create_user_linkedin_form", {
+            //     newUser: newUser
+            // });
         })
     });
 });
