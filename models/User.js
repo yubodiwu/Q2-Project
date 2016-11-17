@@ -68,7 +68,7 @@ class User {
                         .insert(postObject)
                         .returning('*')
                         .then(function(user) {
-                            console.log('user');
+                            console.log(user);
                             console.log(res);
                             res.send(user[0]);
                         })
