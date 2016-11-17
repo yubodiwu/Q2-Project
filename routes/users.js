@@ -14,6 +14,7 @@ var router = express.Router();
 // index
 router.get(`/`, function(req, res) {
     console.log(`users index route is hit`);
+
     knex('users')
         .select('*')
         .returning('*')
@@ -33,7 +34,7 @@ router.get(`/:id`, function(req, res) {
 
     knex('users')
         .select('*')
-        .where('id',req.params.id)
+        .where('id', req.params.id)
         .returning('*')
         .then(function(user) {
             res.send(user[0]);
@@ -72,6 +73,13 @@ router.delete(`/:id`, function(req, res) {
             res.send(true)
         })
         .done();
+})
+router.get("/search/contact", function(req, res) {
+    var sessionInfo = JSON.parse(req.query.valid);
+    console.log('search contact route is hit');
+    console.log(``, req.session);
+    console.log(JSON.parse(req.query.valid));
+    res.render("../views/display_profiles", {session: req.query.valid});
 })
 
 module.exports = router;

@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "boom": "^4.2.0",
+    "dotenv": "^2.0.0",
+    "humps": "^2.0.0"
+  }
+}
