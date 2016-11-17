@@ -57,7 +57,6 @@ class User {
                     .where('email', postObject.email)
                     .returning('*')
                     .then(function(user) {
-                        console.log(`user is: `,user);
                         if (user.length > 0) {
                             res.redirect(`/users/search/contact?valid=${JSON.stringify(user[0])}`);
                         } else {
