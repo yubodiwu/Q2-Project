@@ -20,6 +20,10 @@ const userForms = require('./routes/static_pages');
 const connections = require('./routes/connections');
 const session = require('./routes/session');
 
+if (process.env.NODE_ENV !== 'production') {
+    require('dotenv').config();
+}
+
 app.use(express.static(__dirname + '/public'));
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({
