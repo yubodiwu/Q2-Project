@@ -43,27 +43,39 @@ class User {
 
     postToDB(res) {
         var password = this.password;
-        var that = this;
+        var postObject = this.toObject();
+        delete postObject.password;
 
         bcrypt.hash(password, 12)
             .then(function(hashedPassword) {
                 return hashedPassword;
             }).then(function(hashedPassword) {
-                var postObject = that.toObject();
-                delete postObject.password;
                 postObject.hashed_password = hashedPassword;
-                console.log(postObject);
 
                 knex('users')
-                    .insert(postObject)
+                    .where('email', postObject.email)
                     .returning('*')
                     .then(function(user) {
-                        console.log(user);
-                        res.send(user[0]);
+                        if (user.length > 0) {
+                            return false;
+                        } else {
+                            return true;
+                        }
                     })
-                    .catch(function(err ) {
-                        console.log('post error: ' + err);
-                    })
+            }).then(function(userExists) {
+                if (!userExists) {
+                    knex('users')
+                        .insert(postObject)
+                        .returning('*')
+                        .then(function(user) {
+                            console.log('user');
+                            console.log(res);
+                            res.send(user[0]);
+                        })
+                        .catch(function(err ) {
+                            console.log('post error: ' + err);
+                        })
+                }
             })
     }
 }
