@@ -10,7 +10,8 @@ body{
   background-color: white;
   border-radius: 5px;
   margin-top: 10vh;
-  width:80vh;
+  width:10vh;
+  margin-left:8vh;
 }
 
 #headshot {
