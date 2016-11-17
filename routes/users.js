@@ -7,6 +7,8 @@
 
 const express = require('express');
 const knex = require('../db/knex');
+const User = require('../models/User');
+const bcrypt = require('bcrypt-as-promised');
 var router = express.Router();
 
 // index
@@ -34,7 +36,6 @@ router.get(`/:id`, function(req, res) {
         .where('id',req.params.id)
         .returning('*')
         .then(function(user) {
-            // console.log(user);
             res.send(user[0]);
         });
 });
@@ -43,16 +44,8 @@ router.get(`/:id`, function(req, res) {
 router.post(`/`, function(req, res) {
     console.log(`users create route is hit`);
 
-    knex('users')
-        .insert(req.body)
-        .returning('*')
-        .then(function(user) {
-            console.log(user);
-            res.send(user[0]);
-        })
-        .catch(function(err ) {
-            console.log('post error: ' + err);
-        })
+    var newUser = new User(req.body);
+    newUser.postToDB(res);
 });
 
 // update
@@ -71,6 +64,7 @@ router.put(`/:id`, function(req, res) {
 // delete
 router.delete(`/:id`, function(req, res) {
     console.log('delete route is hit');
+
     knex('users')
         .where('id', req.params.id)
         .del()

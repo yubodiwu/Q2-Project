@@ -21,10 +21,9 @@ exports.seed = function(knex, Promise) {
                     },
                     "name": "San Francisco Bay Area"
                 },
-                "picture_url": "https://media.licdn.com/mpr/mprx/0_m8msvsotWQ6Ev7WxhFHdv4d2WhieBo4xhXsLv4dunLcMemf0GQYnRZgCbm_nqDJP7_uksxcjTWBi",
-                "positions": {
-                    "_total": 0
-                }
+                "pic_url": "https://media.licdn.com/mpr/mprx/0_m8msvsotWQ6Ev7WxhFHdv4d2WhieBo4xhXsLv4dunLcMemf0GQYnRZgCbm_nqDJP7_uksxcjTWBi",
+                "email": "trevorpellegrini@gmail.com",
+                "hashed_password": "thisisahashedpassword"
             }, {
                 "first_name": "Yubo",
                 "headline": "Galvanize Full Stack Student",
@@ -37,10 +36,9 @@ exports.seed = function(knex, Promise) {
                     },
                     "name": "San Francisco Bay Area"
                 },
-                "picture_url": "",
-                "positions": {
-                    "_total": 1
-                }
+                "pic_url": "",
+                "email": "yubo.diwu@gmail.com",
+                "hashed_password": "thisisahashedpassword"
             }, {
                 "first_name": "Mikey",
                 "headline": "Smashed",
@@ -53,10 +51,8 @@ exports.seed = function(knex, Promise) {
                     },
                     "name": "San Francisco Bay Area"
                 },
-                "picture_url": "",
-                "positions": {
-                    "_total": 1
-                }
+                "pic_url": "",
+                "hashed_password": "thisisahashedpassword"
             }]);
         })
         .then(function() {
