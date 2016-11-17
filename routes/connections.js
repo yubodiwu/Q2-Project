@@ -41,7 +41,7 @@ router.get(`/:id`, function(req, res) {
 // create connection between two users of given id
 router.post(`/`, function(req, res) {
     console.log('connections create route is hit');
-
+    console.log(req.body);
     var input1 = req.body;
     var input2 = {
         user_id: req.body.connection_id,

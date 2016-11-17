@@ -15,6 +15,9 @@ $.ajax({
         console.log(data);
         data.forEach(function(element){
             console.log(element);
+            var userSession = document.getElementById("users");
+            var userid = userSession.getAttribute("userid");
+            console.log(userid);
             var container = document.getElementById("users");
             var card = document.createElement("div");
             var cardImageDiv = document.createElement("div");
@@ -40,14 +43,20 @@ $.ajax({
             spanReveal.className = "card-title grey-text text-darken-4";
             rightClose.className = "material-icons right";
             request.className = "btn light-blue darken-1 skill_values";
+            request.id = `${element.id}`;
             image.src = `${element.pic_url}`;
             spanContent.textContent = `${element.first_name} ${element.last_name}`;
             title.textContent = `${element.headline}`
             rightClose.textContent = "close";
             rightVert.textContent = "more_vert";
             paragraphReveal.textContent = "Resume";
-            request.addEventListener("click",function(){
-              alert("hello");
+            request.addEventListener("click",function(event){
+              $.post("http://localhost:3000/connections",{
+                connection_id:event.currentTarget.id,
+                user_id: userid
+              },function(data){
+                console.log(data);
+              })
             })
             request.setAttribute("value" , "Request");
             request.setAttribute("type", "button");
