@@ -81,5 +81,8 @@ router.get("/search/contact", function(req, res) {
     console.log(JSON.parse(req.query.valid));
     res.render("../views/display_profiles", {userid: `${sessionInfo.id}`});
 })
-
+router.get("/edit/profile", function(req,res){
+  console.log("query" + req.query.id);
+  res.render("../views/edit_profile");
+})
 module.exports = router;
