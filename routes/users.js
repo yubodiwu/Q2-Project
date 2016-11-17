@@ -79,10 +79,15 @@ router.get("/search/contact", function(req, res) {
     console.log('search contact route is hit');
     console.log(`id`, sessionInfo.id);
     console.log(JSON.parse(req.query.valid));
-    res.render("../views/display_profiles", {userid: `${sessionInfo.id}`});
+    res.render("../views/display_profiles", {
+        userid: `${sessionInfo.id}`
+    });
 })
-router.get("/edit/profile", function(req,res){
-  console.log("query" + req.query.id);
-  res.render("../views/edit_profile");
+router.get("/edit/profile", function(req, res) {
+    knex("users").where("id", 1)
+    .then(function(user){
+      console.log(user);
+      res.render("../views/edit_profile",{user:user[0]});
+    })
 })
 module.exports = router;
