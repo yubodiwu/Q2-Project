@@ -36,7 +36,7 @@ app.use(cookieParser());
 app.set('trust proxy', 1)
 app.use(cookieSession({
     name: 'session',
-    keys: [process.env.SESSION_SECRET, 1, 2, 3],
+    keys: [process.env.SESSION_SECRET],
     secret: process.env.SESSION_SECRET
 }));
 app.use(`/`, function(req, res, next) {
@@ -53,7 +53,7 @@ app.use('/form', userForms);
 app.use('/connections', connections);
 app.use(session);
 
-app.get("/", function(req, res) {
+app.get('/', function(req, res) {
     res.render('../views/index');
 });
 

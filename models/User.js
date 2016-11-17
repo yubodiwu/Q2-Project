@@ -10,9 +10,10 @@ const bcrypt = require('bcrypt-as-promised');
 
 class User {
     constructor(request) {
-      console.log(request)
+        console.log(`request is`);
+        console.log(request)
         this.id = request.id;
-        this.linkedinId = request.linkedinId
+        this.linkedinId = request.linkedinId;
         this.firstName = request.firstName;
         this.lastName = request.lastName;
         this.headline = request.headline;
@@ -44,6 +45,7 @@ class User {
     postToDB(res) {
         var password = this.password;
         var postObject = this.toObject();
+        console.log(postObject);
         var userExists = 2;
         delete postObject.password;
 
