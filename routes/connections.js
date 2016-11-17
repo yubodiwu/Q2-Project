@@ -33,7 +33,9 @@ router.get(`/:id`, function(req, res) {
         .where('u1.id', req.params.id)
         .join('connections','u1.id','=','connections.user_id')
         .join('users as c','connections.connection_id','=','c.id')
+        .returning('c.id')
         .then(function(users) {
+            console.log(users);
             res.send(users);
         })
 });
@@ -52,6 +54,7 @@ router.post(`/`, function(req, res) {
         .insert([input1, input2])
         .returning('*')
         .then(function(connection) {
+            console.log(connection);
             res.send(connection)
         });
 });
