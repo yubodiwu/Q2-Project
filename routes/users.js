@@ -44,6 +44,8 @@ router.get(`/:id`, function(req, res) {
 // create
 router.post(`/`, function(req, res) {
     console.log(`users create route is hit`);
+    console.log(`req.body is `);
+    console.log(req.body);
 
     var newUser = new User(req.body);
     newUser.postToDB(res);
