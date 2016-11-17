@@ -83,16 +83,9 @@ router.get("/search/contact", function(req, res) {
         userid: `${sessionInfo.id}`
     });
 })
-router.get("/edit/profile", function(req, res) {
-    knex("users").where("id", 1)
-    .then(function(user){
-      console.log(user);
-      res.render("../views/edit_profile",{user:user[0]});
-    })
-})
 
 router.get("/edit/profile", function(req, res) {
-    knex("users").where("id", 1)
+    knex("users").where("id", req.cookie.token.id)
     .then(function(user){
       console.log(user);
       res.render("../views/edit_profile",{user:user[0]});

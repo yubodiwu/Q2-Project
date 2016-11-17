@@ -47,6 +47,7 @@ router.post(`/session`, function(req, res, next) {
             console.log(req.session);
             var stringSession = JSON.stringify(user);
 
+            res.cookie('token', user, {path: '/', httpOnly: true});
             res.redirect(`/users/search/contact?valid=${stringSession}`);
         })
         .catch(bcrypt.MISMATCH_ERROR, () => {
