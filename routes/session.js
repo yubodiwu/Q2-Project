@@ -14,6 +14,8 @@ const { camelizeKeys, decamelizeKeys } = require('humps');
 var router = express.Router();
 
 router.post(`/session`, function(req, res, next) {
+    delete req.body.login;
+    console.log("this should work", req.body);
     const { email, password } = req.body;
     let user;
 
