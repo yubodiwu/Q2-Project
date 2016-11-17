@@ -37,21 +37,32 @@ router.get('/linkedin/callback', function(req, res) {
         var accessToken = results;
         console.log(results);
         var options = {
-            url:
-            'https://api.linkedin.com/v1/people/~:(id,first-name,last-name,maiden-name,headline,location,industry,current-share,summary,specialties,positions,picture-url,picture-urls,email-address)?format=json',
+            url: 'https://api.linkedin.com/v1/people/~:(id,first-name,last-name,maiden-name,headline,location,industry,current-share,summary,specialties,positions,picture-url,picture-urls,email-address)?format=json',
             headers: {
                 Connection: 'Keep-Alive',
                 authorization: `Bearer ${results.access_token}`
             }
         };
         var newUser = new user("")
-        request(options,function(error, response, body) {
+        request(options, function(error, response, body) {
             console.log(`this request thing works`);
             console.log(typeof body)
             var bodyJson = JSON.parse(body);
-            var newUser = new user({linkedinId:bodyJson.id,firstName:bodyJson.firstName,headline:bodyJson.headline,lastName:bodyJson.lastName,industry:bodyJson.industry,pictureUrl:bodyJson.pictureUrl,emailAddress:bodyJson.emailAddress});
+            var newUser = new user({
+                linkedinId: bodyJson.id,
+                firstName: bodyJson.firstName,
+                headline: bodyJson.headline,
+                lastName: bodyJson.lastName,
+                industry: bodyJson.industry,
+                pictureUrl: bodyJson.pictureUrl,
+                emailAddress: bodyJson.emailAddress,
+                password: `asdfjklwlkewijorbhoqwarijgvjwkqlgwijejifejk;fkljadj;kfqwjef`
+            });
+            newUser.postToDB(response);
             console.log("new user", newUser);
-            res.render("../views/create_user_linkedin_form", {newUser:newUser});
+            res.render("../views/create_user_linkedin_form", {
+                newUser: newUser
+            });
         })
     });
 });
