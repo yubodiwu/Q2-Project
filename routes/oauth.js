@@ -53,11 +53,11 @@ router.get('/linkedin/callback', function(req, res) {
                 emailAddress: bodyJson.emailAddress,
                 password: `asdfjklwlkewijorbhoqwarijgvjwkqlgwijejifejk;fkljadj;kfqwjef`
             });
-            newUser.postToDB(response);
+            newUser.postToDB(res);
             // res.redirect(`/users/search/contact`)
-            res.render("../views/create_user_linkedin_form", {
-                newUser: newUser
-            });
+            // res.render("../views/create_user_linkedin_form", {
+            //     newUser: newUser
+            // });
         })
     });
 });

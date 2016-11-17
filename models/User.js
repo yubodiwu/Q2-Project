@@ -44,6 +44,7 @@ class User {
     postToDB(res) {
         var password = this.password;
         var postObject = this.toObject();
+        var userExists = 2;
         delete postObject.password;
 
         bcrypt.hash(password, 12)
@@ -56,26 +57,21 @@ class User {
                     .where('email', postObject.email)
                     .returning('*')
                     .then(function(user) {
+                        console.log(`user is: `,user);
                         if (user.length > 0) {
-                            return false;
+                            res.redirect(`/users/search/contact?valid=${JSON.stringify(user[0])}`);
                         } else {
-                            return true;
+                            knex('users')
+                                .insert(postObject)
+                                .returning('*')
+                                .then(function(user) {
+                                    res.send(user[0]);
+                                })
+                                .catch(function(err ) {
+                                    console.log('post error: ' + err);
+                                });
                         }
                     })
-            }).then(function(userExists) {
-                if (!userExists) {
-                    knex('users')
-                        .insert(postObject)
-                        .returning('*')
-                        .then(function(user) {
-                            console.log(user);
-                            console.log(res);
-                            res.send(user[0]);
-                        })
-                        .catch(function(err ) {
-                            console.log('post error: ' + err);
-                        })
-                }
             })
     }
 }
