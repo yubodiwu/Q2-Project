@@ -75,10 +75,11 @@ router.delete(`/:id`, function(req, res) {
         .done();
 })
 router.get("/search/contact", function(req, res) {
+    var sessionInfo = JSON.parse(req.query.valid);
     console.log('search contact route is hit');
     console.log(``, req.session);
     console.log(JSON.parse(req.query.valid));
-    res.render("../views/display_profiles")
+    res.render("../views/display_profiles", {session: req.query.valid});
 })
 
 module.exports = router;
