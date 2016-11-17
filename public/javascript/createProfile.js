@@ -33,6 +33,7 @@ Skills.prototype.createSkill = (newSkill) => {
     newSkill.setAttribute("type", "button");
     newSkill.className = "btn light-blue darken-1 skill_values";
     skillsBoard.appendChild(newSkill);
+      skillValue.value = "";
 };
 Skills.prototype.remove = (newSkill) => {
   console.log("new skill",newSkill);
