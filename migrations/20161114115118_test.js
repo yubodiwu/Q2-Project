@@ -31,7 +31,9 @@ exports.up = function(knex, Promise) {
             // table.string('summary').notNullable().defaultTo('');
             // table.string('specialties').notNullable().defaultTo('');
             table.string('positions').notNullable().defaultTo('');
-            table.string('picture_url').notNullable().defaultTo('');
+            table.string('pic_url').notNullable().defaultTo('');
+            table.string('email').notNullable().defaultTo('');
+            table.specificType('hashed_password','char(60)').notNullable();
             // table.string('profileUrl').notNullable().defaultTo('');
         }),
         knex.schema.createTable('connections', function(table) {
