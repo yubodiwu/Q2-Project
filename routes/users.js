@@ -44,8 +44,6 @@ router.get(`/:id`, function(req, res) {
 // create
 router.post(`/`, function(req, res) {
     console.log(`users create route is hit`);
-    console.log(`req.body is `);
-    console.log(req.body);
 
     var newUser = new User(req.body);
     newUser.postToDB(res);
@@ -83,5 +81,8 @@ router.get("/search/contact", function(req, res) {
     console.log(JSON.parse(req.query.valid));
     res.render("../views/display_profiles", {userid: `${sessionInfo.id}`});
 })
-
+router.get("/edit/profile", function(req,res){
+  console.log("query" + req.query.valid);
+  res.render("../views/edit_profile");
+})
 module.exports = router;
