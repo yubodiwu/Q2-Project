@@ -18,6 +18,7 @@ const users = require('./routes/users');
 const companies = require('./routes/companies');
 const userForms = require('./routes/static_pages');
 const connections = require('./routes/connections');
+const session = require('./routes/session');
 
 app.use(express.static(__dirname + '/public'));
 app.set('view engine', 'ejs');
@@ -32,6 +33,7 @@ app.use('/users', users);
 app.use('/companies', companies);
 app.use('/form', userForms);
 app.use('/connections', connections);
+app.use(session);
 
 app.get("/", function(req, res) {
     res.render('../views/index');
