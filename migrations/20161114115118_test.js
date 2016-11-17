@@ -33,12 +33,13 @@ exports.up = function(knex, Promise) {
             table.string('positions').notNullable().defaultTo('');
             table.string('pic_url').notNullable().defaultTo('');
             table.string('email').notNullable().defaultTo('');
-            table.specificType('hashed_password','char(60)').notNullable();
+            table.specificType('hashed_password', 'char(60)').notNullable();
             // table.string('profileUrl').notNullable().defaultTo('');
         }),
         knex.schema.createTable('connections', function(table) {
             table.integer('user_id').notNullable().references('id').inTable('users').onDelete('cascade');
             table.integer('connection_id').notNullable().references('id').inTable('users').onDelete('cascade');
+            table.unique(['user_id','connection_id']);
         })
     ]);
 };
