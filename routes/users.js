@@ -74,5 +74,8 @@ router.delete(`/:id`, function(req, res) {
         })
         .done();
 })
+router.get("/search/contact", function(req,res){
+  res.render("../views/display_profiles")
+})
 
 module.exports = router;
