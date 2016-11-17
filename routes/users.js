@@ -14,6 +14,7 @@ var router = express.Router();
 // index
 router.get(`/`, function(req, res) {
     console.log(`users index route is hit`);
+    console.log(req.session);
     knex('users')
         .select('*')
         .returning('*')

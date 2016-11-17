@@ -8,6 +8,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
+const cookieSession = require('cookie-session');
 const knex = require('./node_modules/knex');
 const request = require('request');
 const PORT = 3000;
@@ -31,6 +32,11 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 app.use(cookieParser());
+app.use(cookieSession({
+    name: 'session',
+    keys: [process.env.SESSION_SECRET],
+    secret: process.env.SESSION_SECRET
+}));
 
 app.use('/oauth', oauth);
 app.use('/users', users);

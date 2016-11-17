@@ -14,9 +14,9 @@ const { camelizeKeys, decamelizeKeys } = require('humps');
 var router = express.Router();
 
 router.post(`/session`, function(req, res, next) {
-    delete req.body.login;
-    console.log("this should work", req.body);
     const { email, password } = req.body;
+    console.log(`email is `, email);
+    console.log(`password is `, password);
     let user;
 
     if (!email || !email.trim()) {
@@ -42,7 +42,11 @@ router.post(`/session`, function(req, res, next) {
         .then(() => {
             delete user.hashedPassword;
 
-            res.send(user);
+            req.session.userId = user.id;
+            console.log(`req session id `, req.session.userId);
+            console.log(req.session);
+
+            res.redirect('/search/contact');
         })
         .catch(bcrypt.MISMATCH_ERROR, () => {
             throw boom.create(400, 'Bad email or password');
