@@ -42,11 +42,16 @@ router.get(`/:id`, function(req, res) {
 // create connection between two users of given id
 router.post(`/`, function(req, res) {
     console.log('connections create route is hit');
-    console.log(req.body);
-    var input1 = req.body;
+    console.log(`type of connection id is ${typeof req.body.connection_id}`);
+    console.log(`user id is ${req.body.user_id}`);
+    console.log(`connection id is ${req.body.connection_id}`);
+    var input1 = {
+        user_id: Number(req.body.user_id),
+        connection_id: Number(req.body.connection_id)
+    }
     var input2 = {
-        user_id: req.body.connection_id,
-        connection_id: req.body.user_id
+        user_id: Number(req.body.connection_id),
+        connection_id: Number(req.body.user_id)
     };
 
     knex('connections')
@@ -61,7 +66,7 @@ router.post(`/`, function(req, res) {
 // delete connection between two users
 router.delete(`/:user_id/:connection_id`, function(req, res) {
     console.log('connections delete route is hit');
-    console.log(req.params);
+
     var input1 = req.params;
     var input2 = {
         user_id: req.params.connection_id,

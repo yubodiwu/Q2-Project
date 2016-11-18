@@ -12,13 +12,10 @@ $.ajax({
     url: 'http://localhost:3000/users',
     method: "GET",
     success: function(data) {
-        console.log(data);
         data.forEach(function(element) {
-            console.log(element);
-            console.log(element.skills.skills);
             var userSession = document.getElementById("users");
             var userid = userSession.getAttribute("userid");
-            console.log(userid);
+            console.log(`userid is ${userid}`);
             var container = document.getElementById("users");
             var card = document.createElement("div");
             var cardImageDiv = document.createElement("div");
@@ -28,7 +25,6 @@ $.ajax({
             var title = document.createElement("p");
             var request = document.createElement("input");
             var rightVert = document.createElement("i");
-            // var paragraphContent = document.createElement("p");
             var cardReveal = document.createElement("div");
             var spanReveal = document.createElement("span");
             var rightClose = document.createElement("i");
@@ -71,16 +67,18 @@ $.ajax({
             card.appendChild(cardReveal).appendChild(spanReveal)
             spanReveal.appendChild(rightClose);
             cardReveal.appendChild(paragraphReveal).appendChild(unorderedList);
-            element.skills.skills.forEach(function(element) {
-                var skillButton = document.createElement("input");
-                skillButton.setAttribute("value", element);
-                skillButton.setAttribute("type", "button");
-                skillButton.className = "btn light-blue darken-1";
-                skillButton.style.float = "left";
-                skillButton.style.marginTop = "1vh";
-                skillButton.style.marginRight = "5vh"
-                unorderedList.appendChild(skillButton);
-            });
+            if (element.skills !== null) {
+                element.skills.skills.forEach(function(element) {
+                    var skillButton = document.createElement("input");
+                    skillButton.setAttribute("value", element);
+                    skillButton.setAttribute("type", "button");
+                    skillButton.className = "btn light-blue darken-1";
+                    skillButton.style.float = "left";
+                    skillButton.style.marginTop = "1vh";
+                    skillButton.style.marginRight = "5vh"
+                    unorderedList.appendChild(skillButton);
+                });
+            }
         });
     }
 });
