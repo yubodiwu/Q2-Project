@@ -13,7 +13,7 @@ const { camelizeKeys, decamelizeKeys } = require('humps');
 
 var router = express.Router();
 
-router.post(`/session`, function(req, res, next) {
+router.post(`/`, function(req, res, next) {
     const { email, password } = req.body;
     console.log(`email is `, email);
     console.log(`password is `, password);
@@ -57,4 +57,5 @@ router.post(`/session`, function(req, res, next) {
             next(err)
         })
 });
+
 module.exports = router;
