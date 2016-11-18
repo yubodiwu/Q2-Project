@@ -98,7 +98,6 @@ router.get(`/`, function(req, res) {
         .select('*')
         .returning('*')
         .then(function(users) {
-            console.log(users);
             res.send(users);
         });
 });
