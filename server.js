@@ -49,9 +49,9 @@ app.use(`/`, function(req, res, next) {
 app.use('/oauth', oauth);
 app.use('/users', users);
 app.use('/companies', companies);
-app.use(staticPages);
 app.use('/connections', connections);
-app.use(session);
+app.use('/session', session);
+app.use(staticPages);
 
 app.get('/', function(req, res) {
     res.render('../views/index');
