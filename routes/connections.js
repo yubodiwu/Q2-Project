@@ -5,6 +5,7 @@
 // jshint browser: true
 // jshint mocha: true
 
+const Connection = require('../models/Connection');
 const express = require('express');
 const knex = require('../db/knex');
 var router = express.Router();
@@ -42,25 +43,15 @@ router.get(`/:id`, function(req, res) {
 // create connection between two users of given id
 router.post(`/`, function(req, res) {
     console.log('connections create route is hit');
-    console.log(`type of connection id is ${typeof req.body.connection_id}`);
-    console.log(`user id is ${req.body.user_id}`);
-    console.log(`connection id is ${req.body.connection_id}`);
-    var input1 = {
-        user_id: Number(req.body.user_id),
-        connection_id: Number(req.body.connection_id)
+    
+    var input = {
+        userId: Number(req.body.user_id),
+        connectionId: Number(req.body.connection_id)
     }
-    var input2 = {
-        user_id: Number(req.body.connection_id),
-        connection_id: Number(req.body.user_id)
-    };
 
-    knex('connections')
-        .insert([input1, input2])
-        .returning('*')
-        .then(function(connection) {
-            console.log(connection);
-            res.send(connection)
-        });
+    var connection = new Connection(input);
+
+    connection.postToDB(res);
 });
 
 // delete connection between two users

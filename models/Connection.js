@@ -25,6 +25,7 @@ class Connection {
 
     postToDB(res) {
         var postArray = this.toArray();
+        console.log(postArray);
 
         knex('connections')
             .where('user_id', this.userId)
