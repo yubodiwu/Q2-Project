@@ -29,7 +29,7 @@ router.get(`/:id`, function(req, res) {
     console.log('connections show route is hit');
 
     knex.queryBuilder()
-        .select('u1.id as user_id','u1.first_name as user_firstname','u1.last_name as user_lastname','c.id as connection_id','c.first_name as connection_firstname','c.pic_url','c.last_name as connection_lastname')
+        .select('u1.id as user_id','u1.first_name as user_firstname','u1.last_name as user_lastname','c.id as connection_id','c.first_name as connection_firstname','c.pic_url','c.email','c.last_name as connection_lastname')
         .from('users as u1')
         .where('u1.id', req.params.id)
         .join('connections','u1.id','=','connections.user_id')
