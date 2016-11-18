@@ -25,7 +25,7 @@ window.onload = function() {
 
         $.ajax({
             type: 'put',
-            url: `http://localhost:3000/users/1`,
+            url: `http://localhost:3000/users/${cookie}`,
             data: $('#editUserForm').serialize(),
             success: function(data) {
                 console.log(data);

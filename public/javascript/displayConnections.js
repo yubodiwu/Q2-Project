@@ -18,6 +18,8 @@ $.ajax({
             image.setAttribute('src', data[i].pic_url);
             image.setAttribute("height","300px");
             image.setAttribute("width","300px");
+            image.style.borderRadius = "10px";
+            image.style.marginLeft = "1vh";
             currentRow.appendChild(image);
         }
 }
