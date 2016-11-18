@@ -13,7 +13,7 @@ window.onload = function() {
             var contactContainer = document.getElementById("contactContainer");
             var currentRow;
             for (let i = 0; i < data.length; i++) {
-                if (i % 4 === 0) {
+                if (i % 3 === 0) {
                     currentRow = document.createElement("div");
                     contactContainer.appendChild(currentRow);
                     currentRow.className = "row col m12";

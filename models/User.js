@@ -10,6 +10,8 @@ const bcrypt = require('bcrypt-as-promised');
 
 class User {
     constructor(request) {
+        console.log("request", request)
+        this.request = this.request;
         this.id = request.id;
         this.linkedinId = request.linkedinId;
         this.firstName = request.firstName;
@@ -33,7 +35,7 @@ class User {
             headline: this.headline,
             location: this.location,
             industry: this.industry,
-            positions: this.positions,
+            positions: this.request,
             pic_url: this.profilePictureUrl,
             email: this.email,
             password: this.password
@@ -60,6 +62,7 @@ class User {
                         if (user.length > 0) {
                             res.redirect(`/users/search/contact`);
                         } else {
+                            console.log(postObject);
                             knex('users')
                                 .insert(postObject)
                                 .returning('*')
