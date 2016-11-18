@@ -25,7 +25,7 @@ exports.seed = function(knex, Promise) {
                 "email": "trevorpellegrini@gmail.com",
                 "hashed_password": "$2a$12$NBfl8kdg099B5o67963vyuIerPIMivznOz/TapPNDEfqHe.EVo05u",
                 "skills": {
-                  "skills":["javascript","Software Dev","Node.js","Golf", "Marketo","salesforce.com","awesomeness"]
+                    "skills": ["javascript", "Software Dev", "Node.js", "Golf", "Marketo", "salesforce.com", "awesomeness"]
                 }
             }, {
                 "first_name": "Yubo",
@@ -43,7 +43,7 @@ exports.seed = function(knex, Promise) {
                 "email": "allndiwu@gmail.com",
                 "hashed_password": "$2a$12$NBfl8kdg099B5o67963vyuIerPIMivznOz/TapPNDEfqHe.EVo05u",
                 "skills": {
-                  "skills":["javascript","Software Dev","Node.js","Recursion", "Civil Engineering","awesomeness"]
+                    "skills": ["javascript", "Software Dev", "Node.js", "Recursion", "Civil Engineering", "awesomeness"]
                 }
             }, {
                 "first_name": "Mikey",
@@ -60,8 +60,21 @@ exports.seed = function(knex, Promise) {
                 "pic_url": "https://scontent-lga3-1.xx.fbcdn.net/t31.0-8/1548159_10153744860430623_1596799000_o.jpg",
                 "hashed_password": "$2a$12$NBfl8kdg099B5o67963vyuIerPIMivznOz/TapPNDEfqHe.EVo05u",
                 "skills": {
-                  "skills":["Fatigue","javascript","Software Dev","Node.js","awesomeness"]
+                    "skills": ["Fatigue", "javascript", "Software Dev", "Node.js", "awesomeness"]
                 }
+            }, {
+                "id": 5,
+                "linkedin_id": "4zM4-B7Su-",
+                "first_name": "David",
+                "last_name": "Shin",
+                "headline": "Structural Biologist and Protein Engineer at LBNL Seeking Opportunities",
+                "location": "San Francisco Bay Area",
+                "industry": "Research",
+                "positions": "",
+                "pic_url": "https://media.licdn.com/mpr/mprx/0_KMzyHnhE0W3Ymv4otJ5_Hq_Exf5K2P4o-Y3iHztv8Wl81cfEpxLKQv6UlGL77NJ6lscCFthlAOmN",
+                "email": "davidshin444@gmail.com",
+                "skills": null,
+                "hashed_password": "$2a$12$1v5GPkAOJwtEg1c3IZMU7.kXMiQwNrR7cVgE4VayOVaYLaPK8qI6O"
             }]);
         })
         .then(function() {
