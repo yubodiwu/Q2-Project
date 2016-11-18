@@ -25,14 +25,16 @@ class Connection {
 
     postToDB(res) {
         var postArray = this.toArray();
-        console.log(postArray);
+        var userId = this.userId;
+        var connectionId = this.connectionId;
 
         knex('connections')
-            .where('user_id', this.userId)
+            .where('connection_id', connectionId)
+            .andWhere('user_id', userId)
             .returning('*')
             .then(function(connection) {
                 if (connection.length > 0) {
-                    res.redirect(`/show_connections/${this.userId}`);
+                    res.redirect(`/show_connections/${userId}`);
                 } else {
                     knex('connections')
                         .insert(postArray)
