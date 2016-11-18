@@ -11,19 +11,6 @@ const User = require('../models/User');
 const bcrypt = require('bcrypt-as-promised');
 var router = express.Router();
 
-// index
-router.get(`/`, function(req, res) {
-    console.log(`users index route is hit`);
-
-    knex('users')
-        .select('*')
-        .returning('*')
-        .then(function(users) {
-            console.log(users);
-            res.send(users);
-        });
-});
-
 // new
 router.get(`/new`, function(req, res) {
     res.render('../views/create_user_form')
@@ -101,6 +88,19 @@ router.delete(`/:id`, function(req, res) {
             res.send(true)
         })
         .done();
+});
+
+// index
+router.get(`/`, function(req, res) {
+    console.log(`users index route is hit`);
+
+    knex('users')
+        .select('*')
+        .returning('*')
+        .then(function(users) {
+            console.log(users);
+            res.send(users);
+        });
 });
 
 module.exports = router;
