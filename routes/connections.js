@@ -10,7 +10,7 @@ const knex = require('../db/knex');
 var router = express.Router();
 
 // index
-router.get(`/`, function(req, res) {
+router.get(`/connections`, function(req, res) {
     console.log('connections index route is hit');
 
     knex.queryBuilder()
@@ -24,7 +24,7 @@ router.get(`/`, function(req, res) {
 });
 
 // show connections for user of given id
-router.get(`/:id`, function(req, res) {
+router.get(`/connections/:id`, function(req, res) {
     console.log('connections show route is hit');
 
     knex.queryBuilder()
@@ -40,7 +40,7 @@ router.get(`/:id`, function(req, res) {
 });
 
 // create connection between two users of given id
-router.post(`/`, function(req, res) {
+router.post(`/connections`, function(req, res) {
     console.log('connections create route is hit');
     console.log(req.body);
     var input1 = req.body;
@@ -59,7 +59,7 @@ router.post(`/`, function(req, res) {
 });
 
 // delete connection between two users
-router.delete(`/:user_id/:connection_id`, function(req, res) {
+router.delete(`/connections/:user_id/:connection_id`, function(req, res) {
     console.log('connections delete route is hit');
     console.log(req.params);
     var input1 = req.params;

@@ -21,13 +21,13 @@ Linkedin.auth.setCallback('http://localhost:3000/');
 
 var linkedin = Linkedin.init('my_access_token');
 
-router.get('/linkedin', function(req, res) {
+router.get('/oauth/linkedin', function(req, res) {
     // This will ask for permisssions etc and redirect to callback url.
     Linkedin.setCallback(req.protocol + '://' + req.headers.host + '/oauth/linkedin/callback')
     Linkedin.auth.authorize(res, scope);
 });
 
-router.get('/linkedin/callback', function(req, res) {
+router.get('/oauth/linkedin/callback', function(req, res) {
     console.log(`oauth get request is hit`);
     Linkedin.auth.getAccessToken(res, req.query.code, req.query.state, function(err, results) {
         if (err) return console.error(err);

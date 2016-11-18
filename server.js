@@ -46,11 +46,11 @@ app.use(`/`, function(req, res, next) {
     next();
 })
 
-app.use('/oauth', oauth);
+app.use(oauth);
 app.use('/users', users);
-app.use('/companies', companies);
+app.use(companies);
 app.use(staticPages);
-app.use('/connections', connections);
+app.use(connections);
 app.use(session);
 
 app.get('/', function(req, res) {
