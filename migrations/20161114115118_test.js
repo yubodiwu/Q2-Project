@@ -16,7 +16,7 @@ exports.up = function(knex, Promise) {
             table.string('status').notNullable().defaultTo('');
             table.string('logo_url').notNullable().defaultTo('');
             table.string('locations').notNullable().defaultTo('');
-      git       table.timestamp('updated_at').notNullable().defaultTo(knex.fn.now());
+            table.timestamp('updated_at').notNullable().defaultTo(knex.fn.now());
         }),
         knex.schema.createTable('users', function(table) {
             table.increments('id').primary();
