@@ -54,10 +54,6 @@ router.get('/linkedin/callback', function(req, res) {
                 password: `asdfjklwlkewijorbhoqwarijgvjwkqlgwijejifejk;fkljadj;kfqwjef`
             });
             newUser.postToDB(res);
-            // res.redirect(`/users/search/contact`)
-            // res.render("../views/create_user_linkedin_form", {
-            //     newUser: newUser
-            // });
         })
     });
 });
