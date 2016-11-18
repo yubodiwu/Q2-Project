@@ -1,5 +1,5 @@
 body{
-  background-image: url("http://unsplash.com/photos/xZd3EUj9fFE/download");
+  background-image: url("http://unsplash.com/photos/yR0a5vzUFws/download");
   background-repeat: no-repeat;
   background-size: 100% 100vh;
   background-attachment: fixed;
@@ -19,4 +19,8 @@ width:300px !important;
 }
 .space{
   margin-bottom: -40px !important;
+}
+.logo_image_login {
+    margin-left: 1%;
+    margin-top: .5%;
 }

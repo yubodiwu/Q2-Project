@@ -19,3 +19,7 @@ input {
   -moz-box-shadow: 0 1px 0 0 blue;
   box-shadow: 0 1px 0 0 blue;
 }
+.logo_image_login {
+    margin-left: 2%;
+    margin-top: 8%;
+}
