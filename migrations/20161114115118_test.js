@@ -33,7 +33,8 @@ exports.up = function(knex, Promise) {
             table.string('positions').notNullable().defaultTo('');
             table.string('pic_url').notNullable().defaultTo('');
             table.string('email').notNullable().defaultTo('');
-            table.json('skills').notNullable();
+            table.json('skills');
+
             table.specificType('hashed_password', 'char(60)').notNullable();
             // table.string('profileUrl').notNullable().defaultTo('');
         }),

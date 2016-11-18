@@ -13,6 +13,10 @@ const { camelizeKeys, decamelizeKeys } = require('humps');
 
 var router = express.Router();
 
+router.get(`/`, function(req, res, next) {
+    return next(boom.create(400, 'Email exists'));
+});
+
 router.post(`/`, function(req, res, next) {
     const { email, password } = req.body;
     console.log(`email is `, email);
@@ -42,13 +46,8 @@ router.post(`/`, function(req, res, next) {
         .then(() => {
             delete user.hashedPassword;
 
-            req.session.user = user;
-            console.log(`req session`);
-            console.log(req.session);
-            var stringSession = JSON.stringify(user);
-
             res.cookie('token', user, {path: '/', httpOnly: true});
-            res.redirect(`/users/search/contact?valid=${stringSession}`);
+            res.redirect(`/users/search/contact`);
         })
         .catch(bcrypt.MISMATCH_ERROR, () => {
             throw boom.create(400, 'Bad email or password');

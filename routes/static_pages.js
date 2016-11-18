@@ -22,9 +22,7 @@ router.get(`/show_connections/:id`, function(req, res) {
 
 router.get("/users/search/contact", function(req, res) {
     console.log(`render display profiles route hit`);
-
-    console.log(`req.cookies is`);
-    console.log(req.cookies);
+    
     res.render("../views/display_profiles", {
         userid: req.cookies.token.id
     });
@@ -36,7 +34,7 @@ router.get("/users/edit/profile", function(req, res) {
     knex("users").where("id", req.cookies.token.id)
         .then(function(user) {
             res.render("../views/edit_profile", {
-                user: user[0]
+                user: user[0], cookies:req.cookies.token.id
             });
         });
 });
