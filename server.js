@@ -18,7 +18,7 @@ const app = express();
 const oauth = require('./routes/oauth');
 const users = require('./routes/users');
 const companies = require('./routes/companies');
-const userForms = require('./routes/static_pages');
+const staticPages = require('./routes/static_pages');
 const connections = require('./routes/connections');
 const session = require('./routes/session');
 
@@ -49,7 +49,7 @@ app.use(`/`, function(req, res, next) {
 app.use('/oauth', oauth);
 app.use('/users', users);
 app.use('/companies', companies);
-app.use('/form', userForms);
+app.use(staticPages);
 app.use('/connections', connections);
 app.use(session);
 
