@@ -47,8 +47,8 @@ router.get(`/already_exists`, function(req, res) {
 
 router.get(`/registered`, function(req, res) {
     console.log(`render user successful registration static page`);
-
-    res.render('../views/user_registered');
+    console.log(req.cookies);
+    res.render('../views/user_registered',{ userid: req.cookies.token.id });
 });
 
 module.exports = router;
