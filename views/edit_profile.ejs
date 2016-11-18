@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <title></title>
     <link rel="stylesheet" href="/css/linkedin_create_profile.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
     <script type="text/javascript" src="/javascript/createProfile.js"></script>
@@ -14,29 +15,19 @@
     <div id="container" class="row">
         <div class="col m4 left"></div>
         <div class="col m4 center z-depth-5">
-          <!-- <div class = "col m2"></div> -->
+            <!-- <div class = "col m2"></div> -->
             <!-- <div id="headshot">
                         <img src="<%=user.profilePictureUrl%>" height="200xp" width="200px" alt="">
                     </div> -->
             <!-- <div class = "col m8"> -->
-            <form action="/users/change/profile" method="post">
+            <form id="editUserForm" cookie="<%=cookies%>" action="/users/change/profile" method="post">
 
-                <input class = "center-align" type="text" name="first_name" value="<%=user.first_name%>">
-                <input class = "center-align" type="text" name="last_name" value="<%=user.last_name%>">
-                <input class = "center-align" type="text" name "headline" value="<%=user.headline%>">
-                <input class = "center-align" type="text" name="location" value="San Francisco Bay Area">
-                <input class = "center-align" type="text" name="industry" value="<%=user.industry%>">
+                <input class="center-align" type="text" name="first_name" value="<%=user.first_name%>">
+                <input class="center-align" type="text" name="last_name" value="<%=user.last_name%>">
+                <input class="center-align" type="text" name="headline" value="<%=user.headline%>">
+                <input class="center-align" type="text" name="location" value="San Francisco Bay Area">
+                <input class="center-align" type="text" name="industry" value="<%=user.industry%>">
                 <div class="down">
-
-                    <div class="file-field input-field">
-                        <div class="btn light-blue darken-1">
-                            <span>Resume</span>
-                            <input type="file" name="resumes" multiple>
-                        </div>
-                        <div class="file-path-wrapper">
-                            <input class="file-path validate" type="text" placeholder="Upload resume">
-                        </div>
-                    </div>
                 </div>
 
                 <div id="added_skills"></div>
