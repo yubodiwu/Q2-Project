@@ -42,7 +42,7 @@ class User {
         };
     }
 
-    postToDB(res) {
+    postToDBoAuth(res) {
         var password = this.password;
         var postObject = this.toObject();
         var userExists = 2;
@@ -59,17 +59,51 @@ class User {
                     .returning('*')
                     .then(function(user) {
                         console.log(`cookie created`);
-                        console.log(res.cookie);
                         if (user.length > 0) {
+                            res.cookie('token', user[0], {path: '/', httpOnly: true});
                             res.redirect(`/users/search/contact`);
+                        } else {
+                            console.log(`linked in user registered`);
+                            knex('users')
+                                .insert(postObject)
+                                .returning('*')
+                                .then(function(user) {
+                                    res.cookie('token', user[0], {path: '/', httpOnly: true});
+                                    res.redirect('/registered')
+                                })
+                                .catch(function(err ) {
+                                    console.log('post error: ' + err);
+                                });
+                        }
+                    })
+            })
+    }
+
+    postToDB(res) {
+        var password = this.password;
+        var postObject = this.toObject();
+        var userExists = 2;
+        delete postObject.password;
+
+        bcrypt.hash(password, 12)
+            .then(function(hashedPassword) {
+                return hashedPassword;
+            }).then(function(hashedPassword) {
+                postObject.hashed_password = hashedPassword;
+
+                knex('users')
+                    .where('email', postObject.email)
+                    .returning('*')
+                    .then(function(user) {
+                        if (user.length > 0) {
+                            res.redirect(`/already_exists`);
                         } else {
                             knex('users')
                                 .insert(postObject)
                                 .returning('*')
                                 .then(function(user) {
                                     res.cookie('token', user[0], {path: '/', httpOnly: true});
-                                    console.log(`cookie should still be there`);
-                                    res.redirect('/users/search/contact')
+                                    res.redirect('/registered')
                                 })
                                 .catch(function(err ) {
                                     console.log('post error: ' + err);
