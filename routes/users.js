@@ -75,21 +75,4 @@ router.delete(`/:id`, function(req, res) {
         .done();
 });
 
-router.get("/search/contact", function(req, res) {
-    console.log(`render display profiles route hit`);
-
-    res.render("../views/display_profiles", {
-        userid: req.cookies.token.id
-    });
-});
-
-router.get("/edit/profile", function(req, res) {
-    console.log(`render edit profile route hit`);
-
-    knex("users").where("id", req.cookies.token.id)
-    .then(function(user){
-      res.render("../views/edit_profile",{user:user[0]});
-  });
-});
-
 module.exports = router;
