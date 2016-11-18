@@ -73,26 +73,24 @@ router.delete(`/:id`, function(req, res) {
             res.send(true)
         })
         .done();
-})
+});
+
 router.get("/search/contact", function(req, res) {
-    var sessionInfo = JSON.parse(req.query.valid);
-    console.log('search contact route is hit');
-    console.log(`id`, sessionInfo.id);
-    console.log(JSON.parse(req.query.valid));
+    console.log(`render display profiles route hit`);
+
     res.render("../views/display_profiles", {
-        userid: `${sessionInfo.id}`
+        userid: req.cookies.token.id
     });
-})
+});
 
 router.get("/edit/profile", function(req, res) {
+    console.log(`render edit profile route hit`);
 
-    console.log("token", req.cookies)
     knex("users").where("id", req.cookies.token.id)
     .then(function(user){
-      console.log(user);
       res.render("../views/edit_profile",{user:user[0]});
-    })
-})
+  });
+});
 
 router.post("/change/profile", function(req,res){
   console.log(req.body);
