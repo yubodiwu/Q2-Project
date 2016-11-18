@@ -22,9 +22,9 @@ router.get(`/show_connections/:id`, function(req, res) {
 
 router.get("/users/search/contact", function(req, res) {
     console.log(`render display profiles route hit`);
-    console.log(`userid in cookie is ${req.cookies.token[0].id}`);
+    console.log(`userid in cookie is ${req.cookies.token.id}`);
     res.render("../views/display_profiles", {
-        userid: req.cookies.token[0].id
+        userid: req.cookies.token.id
     });
 });
 
