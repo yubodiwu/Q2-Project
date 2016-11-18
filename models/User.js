@@ -56,16 +56,15 @@ class User {
                     .where('email', postObject.email)
                     .returning('*')
                     .then(function(user) {
+                        res.cookie('token', user[0], {path: '/', httpOnly: true});
                         if (user.length > 0) {
-                            console.log(`user is here`);
-                            res.cookie('token', user[0], {path: '/', httpOnly: true});
-                            res.redirect('/users/search/contact');
+                            res.redirect(`/users/search/contact`);
                         } else {
                             knex('users')
                                 .insert(postObject)
                                 .returning('*')
                                 .then(function(user) {
-                                    res.send(user[0]);
+                                    res.redirect('/users/search/contact')
                                 })
                                 .catch(function(err ) {
                                     console.log('post error: ' + err);
