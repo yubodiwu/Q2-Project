@@ -49,13 +49,40 @@ router.post(`/`, function(req, res) {
     newUser.postToDB(res);
 });
 
+router.post('/change/profile',function(req,res){
+  console.log(req.body);
+})
+
 // update
 router.put(`/:id`, function(req, res) {
     console.log('users update route is hit');
-
+    console.log("params", req.params);
+    console.log("body", req.body);
+    var skills = req.body;
+    var newArray = [];
+    for(var key in skills){
+      if(key.startsWith("skill")){
+        console.log(true);
+        newArray.push(skills[key]);
+        delete req.body[key];
+      }
+    }
+    console.log(skills);
+    console.log(newArray);
+    newArray.pop();
+    req.body.skills = newArray.join(" ");
+    console.log("body", req.body);
     knex('users')
         .where('id', req.params.id)
-        .update(req.body)
+        .update({
+          first_name:req.body.first_name,
+          last_name:req.body.last_name,
+          location:req.body.location,
+          headline:req.body.headline,
+          industry:req.body.industry,
+          skills:req.body.skills
+        }
+        )
         .returning('*')
         .then(function(user) {
             res.send(user[0]);
