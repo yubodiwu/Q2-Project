@@ -53,7 +53,7 @@ router.get('/linkedin/callback', function(req, res) {
                 emailAddress: bodyJson.emailAddress,
                 password: `asdfjklwlkewijorbhoqwarijgvjwkqlgwijejifejk;fkljadj;kfqwjef`
             });
-            newUser.postToDB(res);
+            newUser.postToDBoAuth(res);
         })
     });
 });

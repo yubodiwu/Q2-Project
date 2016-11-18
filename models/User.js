@@ -40,7 +40,7 @@ class User {
         };
     }
 
-    postToDB(res) {
+    postToDBoAuth(res) {
         var password = this.password;
         var postObject = this.toObject();
         var userExists = 2;
@@ -64,7 +64,41 @@ class User {
                                 .insert(postObject)
                                 .returning('*')
                                 .then(function(user) {
-                                    res.redirect('/users/search/contact')
+                                    res.redirect('/users/registered')
+                                })
+                                .catch(function(err ) {
+                                    console.log('post error: ' + err);
+                                });
+                        }
+                    })
+            })
+    }
+
+    postToDB(res) {
+        var password = this.password;
+        var postObject = this.toObject();
+        var userExists = 2;
+        delete postObject.password;
+
+        bcrypt.hash(password, 12)
+            .then(function(hashedPassword) {
+                return hashedPassword;
+            }).then(function(hashedPassword) {
+                postObject.hashed_password = hashedPassword;
+
+                knex('users')
+                    .where('email', postObject.email)
+                    .returning('*')
+                    .then(function(user) {
+                        if (user.length > 0) {
+                            res.redirect(`/users/already_exists`);
+                        } else {
+                            res.cookie('token', user[0], {path: '/', httpOnly: true});
+                            knex('users')
+                                .insert(postObject)
+                                .returning('*')
+                                .then(function(user) {
+                                    res.redirect('/users/registered')
                                 })
                                 .catch(function(err ) {
                                     console.log('post error: ' + err);
