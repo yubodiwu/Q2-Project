@@ -85,7 +85,9 @@ router.get("/search/contact", function(req, res) {
 })
 
 router.get("/edit/profile", function(req, res) {
-    knex("users").where("id", req.cookie.token.id)
+
+    console.log("token", req.cookies)
+    knex("users").where("id", req.cookies.token.id)
     .then(function(user){
       console.log(user);
       res.render("../views/edit_profile",{user:user[0]});

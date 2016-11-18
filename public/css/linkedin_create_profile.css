@@ -7,7 +7,7 @@ body{
 .center{
   float:right;
   color:black;
-  background-color: white;
+  background-color: rgba(255,255,255,0.9);
   border-radius: 5px;
   margin-top: 10vh;
   width:10vh;
