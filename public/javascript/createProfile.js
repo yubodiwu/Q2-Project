@@ -17,9 +17,8 @@ window.onload = function() {
         // skillsBoard.appendChild(newButton);
     });
 };
-
+var numberOfSkills = 0;
 function Skills(newSkill) {
-    console.log(newSkill);
     // this.button = newSkill;
     this.createSkill(newSkill);
     newSkill.addEventListener("click", function() {
@@ -27,9 +26,11 @@ function Skills(newSkill) {
     });
 }
 Skills.prototype.createSkill = (newSkill) => {
+    numberOfSkills = numberOfSkills + 1;
     var skillsBoard = document.getElementById("added_skills");
     var skillValue = document.getElementById("add_skill");
     newSkill.setAttribute("value", skillValue.value);
+    newSkill.setAttribute("name", `skill${numberOfSkills}`);
     newSkill.setAttribute("type", "button");
     newSkill.className = "btn light-blue darken-1 skill_values";
     skillsBoard.appendChild(newSkill);

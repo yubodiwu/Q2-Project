@@ -94,4 +94,8 @@ router.get("/edit/profile", function(req, res) {
     })
 })
 
+router.post("/change/profile", function(req,res){
+  console.log(req.body);
+})
+
 module.exports = router;
