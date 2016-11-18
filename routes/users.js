@@ -19,6 +19,7 @@ router.get(`/`, function(req, res) {
         .select('*')
         .returning('*')
         .then(function(users) {
+            console.log(users);
             res.send(users);
         });
 });
@@ -80,7 +81,7 @@ router.put(`/:id`, function(req, res) {
           location:req.body.location,
           headline:req.body.headline,
           industry:req.body.industry,
-          skills:req.body.skills
+          //skills:req.body.skills
         }
         )
         .returning('*')
