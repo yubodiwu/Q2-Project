@@ -57,7 +57,8 @@ class User {
                     .returning('*')
                     .then(function(user) {
                         if (user.length > 0) {
-                            res.redirect('/session');
+                            res.cookie('token', user, {path: '/', httpOnly: true});
+                            res.redirect('/users/search/contact');
                         } else {
                             knex('users')
                                 .insert(postObject)
