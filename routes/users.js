@@ -58,7 +58,7 @@ router.put(`/:id`, function(req, res) {
     console.log(skills);
     console.log(newArray);
     newArray.pop();
-    req.body.skills = newArray.join(" ");
+    req.body.skills = {skills:newArray};
     console.log("body", req.body);
     knex('users')
         .where('id', req.params.id)
@@ -68,7 +68,7 @@ router.put(`/:id`, function(req, res) {
           location:req.body.location,
           headline:req.body.headline,
           industry:req.body.industry,
-          //skills:req.body.skills
+          skills:req.body.skills
         }
         )
         .returning('*')
