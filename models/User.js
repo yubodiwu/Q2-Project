@@ -58,16 +58,18 @@ class User {
                     .where('email', postObject.email)
                     .returning('*')
                     .then(function(user) {
-                        res.cookie('token', user[0], {path: '/', httpOnly: true});
+                        console.log(`cookie created`);
                         if (user.length > 0) {
+                            res.cookie('token', user[0], {path: '/', httpOnly: true});
                             res.redirect(`/users/search/contact`);
                         } else {
-                            console.log(postObject);
+                            console.log(`linked in user registered`);
                             knex('users')
                                 .insert(postObject)
                                 .returning('*')
                                 .then(function(user) {
-                                    res.redirect('/users/registered')
+                                    res.cookie('token', user[0], {path: '/', httpOnly: true});
+                                    res.redirect('/registered')
                                 })
                                 .catch(function(err ) {
                                     console.log('post error: ' + err);
@@ -94,14 +96,14 @@ class User {
                     .returning('*')
                     .then(function(user) {
                         if (user.length > 0) {
-                            res.redirect(`/users/already_exists`);
+                            res.redirect(`/already_exists`);
                         } else {
-                            res.cookie('token', user[0], {path: '/', httpOnly: true});
                             knex('users')
                                 .insert(postObject)
                                 .returning('*')
                                 .then(function(user) {
-                                    res.redirect('/users/registered')
+                                    res.cookie('token', user[0], {path: '/', httpOnly: true});
+                                    res.redirect('/registered')
                                 })
                                 .catch(function(err ) {
                                     console.log('post error: ' + err);

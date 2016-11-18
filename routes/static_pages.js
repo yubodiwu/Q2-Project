@@ -39,13 +39,13 @@ router.get("/users/edit/profile", function(req, res) {
         });
 });
 
-router.get(`/users/already_exists`, function(req, res) {
+router.get(`/already_exists`, function(req, res) {
     console.log(`render user already exists static page`);
 
     res.render('../views/user_exists');
 });
 
-router.get(`/users/registered`, function(req, res) {
+router.get(`/registered`, function(req, res) {
     console.log(`render user successful registration static page`);
 
     res.render('../views/user_registered');
