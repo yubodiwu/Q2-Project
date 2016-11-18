@@ -34,7 +34,7 @@ router.get("/users/edit/profile", function(req, res) {
     knex("users").where("id", req.cookies.token.id)
         .then(function(user) {
             res.render("../views/edit_profile", {
-                user: user[0]
+                user: user[0], cookies:req.cookies.token.id
             });
         });
 });
