@@ -8,6 +8,7 @@ window.onload = function() {
         url: `http://localhost:3000/connections/${cookie}`,
         method: "GET",
         success: function(data) {
+          console.log("ajax")
             console.log(data);
             var contactContainer = document.getElementById("contactContainer");
             var currentRow;
