@@ -58,7 +58,7 @@ class User {
                     .then(function(user) {
                         if (user.length > 0) {
                             console.log(`user is here`);
-                            res.cookie('token', user, {path: '/', httpOnly: true});
+                            res.cookie('token', user[0], {path: '/', httpOnly: true});
                             res.redirect('/users/search/contact');
                         } else {
                             knex('users')
