@@ -21,7 +21,7 @@ window.onload = function() {
     // })
     $('#submit_button').bind('click', function (e) {
         console.log("hello");
-        e.preventDefault();
+        // e.preventDefault();
 
         $.ajax({
             type: 'put',
@@ -29,7 +29,7 @@ window.onload = function() {
             data: $('#editUserForm').serialize(),
             success: function(data) {
                 console.log(data);
-                alert('form was submitted');
+                // alert('form was submitted');
             }
         });
 
