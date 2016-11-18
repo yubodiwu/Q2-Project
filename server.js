@@ -33,25 +33,13 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 app.use(cookieParser());
-app.set('trust proxy', 1)
-app.use(cookieSession({
-    name: 'session',
-    keys: [process.env.SESSION_SECRET],
-    secret: process.env.SESSION_SECRET
-}));
-app.use(`/`, function(req, res, next) {
-    console.log(`seeing session ${num}`);
-    console.log(req.session);
-    num++;
-    next();
-})
 
 app.use('/oauth', oauth);
 app.use('/users', users);
 app.use('/companies', companies);
 app.use(staticPages);
 app.use('/connections', connections);
-app.use(session);
+app.use('/session', session);
 
 app.get('/', function(req, res) {
     res.render('../views/index');

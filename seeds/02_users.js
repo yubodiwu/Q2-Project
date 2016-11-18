@@ -40,7 +40,7 @@ exports.seed = function(knex, Promise) {
                     "name": "San Francisco Bay Area"
                 },
                 "pic_url": "https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/5/005/095/0a8/299b207.jpg",
-                "email": "yubo.diwu@gmail.com",
+                "email": "allndiwu@gmail.com",
                 "hashed_password": "$2a$12$NBfl8kdg099B5o67963vyuIerPIMivznOz/TapPNDEfqHe.EVo05u",
                 "skills": {
                   "skills":["javascript","Software Dev","Node.js","Recursion", "Civil Engineering","awesomeness"]
