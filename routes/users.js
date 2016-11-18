@@ -80,7 +80,7 @@ router.get("/search/contact", function(req, res) {
     console.log(`id`, sessionInfo.id);
     console.log(JSON.parse(req.query.valid));
     res.render("../views/display_profiles", {
-        userid: `${sessionInfo.id}`
+        userid: req.cookies.token.
     });
 })
 
